@@ -13,6 +13,7 @@ type PropsType = {
     removeTask: (id: string) => void
     changeFilter: (value: FilterValuesType) => void
     addTask: (title: string) => void
+    changeTaskStatus: (taskId: string, isDone:boolean) => void
 }
 
 export const Todolist = (props: PropsType) => {
@@ -51,12 +52,15 @@ export const Todolist = (props: PropsType) => {
             <ul>
                 {props.tasks.map(el => {
                     const removeTask = () => props.removeTask(el.id)
+                    const onChangeHandler = (e:ChangeEvent<HTMLInputElement>) => {
+                        props.changeTaskStatus(el.id, e.currentTarget.checked)
+                    }
+
 
                     return (
                         <li key={el.id}>
                             <button onClick={removeTask}>x</button>
-                            <input type="checkbox"
-                                   checked={el.isDone}/>
+                            <input type="checkbox" onChange={onChangeHandler}/>
                             <span>{el.title}</span>
                         </li>
                     );
