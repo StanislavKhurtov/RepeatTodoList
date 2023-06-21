@@ -17,12 +17,15 @@ type PropsType = {
 }
 
 export const Todolist = (props: PropsType) => {
+
     const [newTasksTitle, setNewTaskTitle] = useState("");
+    const [error, setError] = useState<string | null>(null)
 
     const onNewTitleChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setNewTaskTitle(e.currentTarget.value);
     };
     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+        setError(null)
         if (e.charCode === 13) {
             props.addTask(newTasksTitle);
             setNewTaskTitle("");
@@ -37,7 +40,10 @@ export const Todolist = (props: PropsType) => {
         if (newTasksTitle.trim() !== "") {
             props.addTask(newTasksTitle.trim());
             setNewTaskTitle("");
+        } else {
+            setError("Title is required")
         }
+
 
     }
 
@@ -54,6 +60,7 @@ export const Todolist = (props: PropsType) => {
                 <button
                     onClick={addTask}>+
                 </button>
+                {error && <div className="errorMessage">"Field is required"</div>}
             </div>
             <ul>
                 {props.tasks.map(el => {
@@ -66,7 +73,11 @@ export const Todolist = (props: PropsType) => {
                     return (
                         <li key={el.id}>
                             <button onClick={removeTask}>x</button>
-                            <input type="checkbox" onChange={onChangeHandler}/>
+                            <input
+                                type="checkbox"
+                                onChange={onChangeHandler}
+                                className={error ? "error" : ""}
+                            />
                             <span>{el.title}</span>
                         </li>
                     );
