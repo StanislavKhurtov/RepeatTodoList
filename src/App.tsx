@@ -1,25 +1,49 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import {TaskType, Todolist} from "./Todolist";
+import {Todolist} from "./Todolist";
+import {v1} from "uuid";
+
+export type FilterValuesType = "all" | "active" | "completed";
 
 function App() {
-    let tasks1:Array<TaskType> = [
-        {id: 1, title: "CSS", isDone: true},
-        {id: 2, title: "CSS", isDone: true},
-        {id: 3, title: "CSS", isDone: true},
 
-    ]
-    let tasks2:Array<TaskType> = [
-        {id: 1, title: "Terminator", isDone: true},
-        {id: 2, title: "John Weak", isDone: false},
-        {id: 3, title: "XXX", isDone: true},
+    const [tasks, setTasks] = useState([
+        {id: v1(), title: "CSS", isDone: true},
+        {id: v1(), title: "CSS", isDone: true},
+        {id: v1(), title: "CSS", isDone: false},
 
-    ]
+    ])
+
+    let [filter, setFilter] = useState<FilterValuesType>("all")
+
+    let tasksForTodoList = tasks;
+
+    if (filter === "active") {
+        tasksForTodoList = tasks.filter(el => el.isDone)
+    }
+    if (filter === "completed") {
+        tasksForTodoList = tasks.filter(el => !el.isDone)
+    }
+
+
+    const removeTask = (id: string) => {
+        setTasks(tasks.filter(el => el.id !== id))
+    }  //функция удаления строки
+    const changeFilter = (value: FilterValuesType) => {
+        setFilter(value)
+    }
+
 
     return (
         <div className="App">
-            <Todolist title={"What to learn"} tasks={tasks1}/>
-            <Todolist title={"Movies"} tasks={tasks2}/>
+            <Todolist
+                title={"What to learn"}
+                tasks={tasksForTodoList}
+                removeTask={removeTask}
+                changeFilter={changeFilter}
+            />
+
+
         </div>
     );
 }
