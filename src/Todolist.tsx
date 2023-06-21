@@ -13,29 +13,35 @@ type PropsType = {
     removeTask: (id: string) => void
     changeFilter: (value: FilterValuesType) => void
     addTask: (title: string) => void
-    changeTaskStatus: (taskId: string, isDone:boolean) => void
+    changeTaskStatus: (taskId: string, isDone: boolean) => void
 }
 
 export const Todolist = (props: PropsType) => {
-    const [newTasksTitle, setNewTaskTitle] = useState("")
+    const [newTasksTitle, setNewTaskTitle] = useState("");
+
     const onNewTitleChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setNewTaskTitle(e.currentTarget.value);
-    }
+    };
     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.charCode === 13) {
             props.addTask(newTasksTitle);
             setNewTaskTitle("");
         }
-    }
+    };
     const onAllClickHandler = () => props.changeFilter("all");
-    const onActiveClickHandler = () => props.changeFilter("active")
-    const onCompletedClickHandler = () => props.changeFilter("completed")
+    const onActiveClickHandler = () => props.changeFilter("active");
+    const onCompletedClickHandler = () => props.changeFilter("completed");
 
 
     const addTask = () => {
-        props.addTask(newTasksTitle);
-        setNewTaskTitle("");
+        if (newTasksTitle.trim() !== "") {
+            props.addTask(newTasksTitle.trim());
+            setNewTaskTitle("");
+        }
+
     }
+
+
     return (
         <div>
             <h3>{props.title}</h3>
@@ -52,7 +58,7 @@ export const Todolist = (props: PropsType) => {
             <ul>
                 {props.tasks.map(el => {
                     const removeTask = () => props.removeTask(el.id)
-                    const onChangeHandler = (e:ChangeEvent<HTMLInputElement>) => {
+                    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
                         props.changeTaskStatus(el.id, e.currentTarget.checked)
                     }
 
