@@ -40,12 +40,13 @@ function App() {
 
 
 
-    const changeStatus = (taskId: string, isDone: boolean) => {
-        let task = tasksObj.find(el => el.id === taskId);
+    const changeStatus = (taskId: string, isDone: boolean,todolistID:string) => {
+        let tasks = tasksObj[todolistID];
+        let task = tasks.find(el => el.id === taskId);
         if (task) {
             task.isDone = isDone;
         }
-        setTasks([...tasksObj])
+        setTasks({...tasksObj})
 
         /* setTasks(tasks.map(el=>el.id===taskId?{...el, isDone: isDone} : el))*/
     }
