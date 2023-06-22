@@ -14,14 +14,14 @@ function App() {
 
     const removeTask = (id: string, todolistID: string) => {
         let tasks = tasksObj[todolistID];
-        let filteredTasks=tasks.filter(el=> el.id!==id)
+        let filteredTasks = tasks.filter(el => el.id !== id)
         tasksObj[todolistID] = filteredTasks;
         setTasks({...tasksObj})
 
 
     }  //функция удаления строки
 
-    const addTask = (title: string, todolistID:string) => {
+    const addTask = (title: string, todolistID: string) => {
         let newTask = {id: v1(), title: title, isDone: false};
         let tasks = tasksObj[todolistID];
         let newTasks = [newTask, ...tasks];
@@ -38,9 +38,7 @@ function App() {
         /*setTodoLists(todoLists.map(el=>el.id === todolistID ? {...el, filter: value}: el))*/
     }
 
-
-
-    const changeStatus = (taskId: string, isDone: boolean,todolistID:string) => {
+    const changeStatus = (taskId: string, isDone: boolean, todolistID: string) => {
         let tasks = tasksObj[todolistID];
         let task = tasks.find(el => el.id === taskId);
         if (task) {
@@ -50,6 +48,12 @@ function App() {
 
         /* setTasks(tasks.map(el=>el.id===taskId?{...el, isDone: isDone} : el))*/
     }
+
+
+    const removeTodolist = (todolistID: string) => {
+        setTodoLists(todoLists.filter(el => el.id !== todolistID))
+    }
+
 
     let todolistId1 = v1();
     let todolistId2 = v1();
@@ -101,6 +105,7 @@ function App() {
                         addTask={addTask}
                         changeTaskStatus={changeStatus}
                         filter={el.filter}
+                        removeTodolist={removeTodolist}
                     />
 
                 );
