@@ -21,7 +21,17 @@ type PropsType = {
 export const Todolist = (props: PropsType) => {
 
     const [newTasksTitle, setNewTaskTitle] = useState("");
-    const [error, setError] = useState<string | null>(null)
+    const [error, setError] = useState<string | null>(null);
+
+    const addTask = () => {
+        if (newTasksTitle.trim() !== "") {
+            props.addTask(newTasksTitle.trim(), props.id);
+            setNewTaskTitle("");
+        } else {
+            setError("Title is required")
+        }
+    };
+
 
     const onNewTitleChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setNewTaskTitle(e.currentTarget.value);
@@ -38,16 +48,7 @@ export const Todolist = (props: PropsType) => {
     const onCompletedClickHandler = () => props.changeFilter(props.id,"completed");
 
 
-    const addTask = () => {
-        if (newTasksTitle.trim() !== "") {
-            props.addTask(newTasksTitle.trim(), props.id);
-            setNewTaskTitle("");
-        } else {
-            setError("Title is required")
-        }
 
-
-    }
 
 
     return (
@@ -66,7 +67,7 @@ export const Todolist = (props: PropsType) => {
             </div>
             <ul>
                 {props.tasks.map(el => {
-                    const removeTask = () => props.removeTask(el.id,props.id)
+                    const onClickHandler = () => props.removeTask(el.id,props.id)
                     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
                         props.changeTaskStatus(el.id, e.currentTarget.checked,props.id)
                     }
@@ -74,10 +75,11 @@ export const Todolist = (props: PropsType) => {
 
                     return (
                         <li key={el.id} className={!el.isDone ? 'isDone' : ""}>
-                            <button onClick={removeTask}>x</button>
+                            <button onClick={onClickHandler}>x</button>
                             <input
                                 type="checkbox"
                                 onChange={onChangeHandler}
+                                checked={el.isDone}
                                 className={error ? "error" : ""}
                             />
                             <span>{el.title}</span>
