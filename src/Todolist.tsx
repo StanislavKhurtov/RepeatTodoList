@@ -11,9 +11,9 @@ type PropsType = {
     id:string
     title: string
     tasks: Array<TaskType>
-    removeTask: (id: string) => void
+    removeTask: (id: string, todolistID: string) => void
     changeFilter: (todolistID: string, value: FilterValuesType) => void
-    addTask: (title: string) => void
+    addTask: (title: string, todolistID:string) => void
     changeTaskStatus: (taskId: string, isDone: boolean) => void
     filter:FilterValuesType
 }
@@ -29,7 +29,7 @@ export const Todolist = (props: PropsType) => {
     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         setError(null)
         if (e.charCode === 13) {
-            props.addTask(newTasksTitle);
+            props.addTask(newTasksTitle,props.id);
             setNewTaskTitle("");
         }
     };
@@ -40,7 +40,7 @@ export const Todolist = (props: PropsType) => {
 
     const addTask = () => {
         if (newTasksTitle.trim() !== "") {
-            props.addTask(newTasksTitle.trim());
+            props.addTask(newTasksTitle.trim(), props.id);
             setNewTaskTitle("");
         } else {
             setError("Title is required")
@@ -66,7 +66,7 @@ export const Todolist = (props: PropsType) => {
             </div>
             <ul>
                 {props.tasks.map(el => {
-                    const removeTask = () => props.removeTask(el.id)
+                    const removeTask = () => props.removeTask(el.id,props.id)
                     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
                         props.changeTaskStatus(el.id, e.currentTarget.checked)
                     }
