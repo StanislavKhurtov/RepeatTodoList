@@ -26,10 +26,14 @@ function App() {
 
     const addTask = (title: string, todolistID: string) => {
         let newTask = {id: v1(), title: title, isDone: false};
-        let tasks = tasksObj[todolistID];
+        /*let tasks = tasksObj[todolistID];
         let newTasks = [newTask, ...tasks];
         tasksObj[todolistID] = newTasks;
-        setTasks({...tasksObj})
+        setTasks({...tasksObj})*/
+
+        setTasks({...tasksObj, [todolistID]:[newTask, ...tasksObj[todolistID]]})
+
+
     }
 
     const changeFilter = (todolistID: string, value: FilterValuesType) => {
