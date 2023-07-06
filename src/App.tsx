@@ -13,10 +13,13 @@ type TodoListType = {
 function App() {
 
     const removeTask = (id: string, todolistID: string) => {
-        let tasks = tasksObj[todolistID];
-        let filteredTasks = tasks.filter(el => el.id !== id)
-        tasksObj[todolistID] = filteredTasks;
-        setTasks({...tasksObj})
+        //let tasks = tasksObj[todolistID];
+        //let filteredTasks = tasks.filter(el => el.id !== id)
+        //tasksObj[todolistID] = filteredTasks;
+        //setTasks({...tasksObj})
+
+
+        setTasks({...tasksObj, [todolistID]: tasksObj[todolistID].filter(el => el.id !== id)})
 
 
     }  //функция удаления строки
@@ -51,7 +54,10 @@ function App() {
 
 
     const removeTodolist = (todolistID: string) => {
+
         setTodoLists(todoLists.filter(el => el.id !== todolistID))
+        delete tasksObj[todolistID]
+        setTasks({...tasksObj})
     }
 
 
@@ -75,7 +81,6 @@ function App() {
         [todolistId2]: [
             {id: v1(), title: "Milk", isDone: true},
             {id: v1(), title: "Sugar", isDone: true},
-
         ],
     });
 
