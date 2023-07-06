@@ -1,6 +1,7 @@
 import React, {ChangeEvent} from "react";
 import {FilterValuesType} from "./App";
 import {AddItemForm} from "./AddItemForm";
+import {EditebleSpan} from "./EditebleSpan";
 
 export type TaskType = {
     id: string
@@ -55,7 +56,7 @@ export const Todolist = (props: PropsType) => {
                                 onChange={onChangeHandler}
                                 checked={el.isDone}
                             />
-                            <span>{el.title}</span>
+                            <EditebleSpan title={el.title}/>
                         </li>
                     );
                 })}
@@ -74,4 +75,6 @@ export const Todolist = (props: PropsType) => {
         </div>
     );
 }
+
+
 
