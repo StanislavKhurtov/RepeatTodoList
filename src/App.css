@@ -1,14 +1,14 @@
 .App {
     padding: 20px;
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 20px;
-
+    justify-content: center;
+    gap: 30px;
 }
 
 .error {
-    border: 1px solid red;
+    border: 2px solid red;
 }
 
 .errorMessage {
@@ -16,9 +16,16 @@
 }
 
 .activeFilter {
-    background-color: cyan;
+    background-color: cornflowerblue;
+    border: none;
 }
 
-.isDone{
+.isDone {
     opacity: 0.5;
+}
+
+
+.buttons {
+    display: flex;
+    gap: 15px;
 }

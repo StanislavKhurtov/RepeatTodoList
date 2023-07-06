@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import {Todolist} from "./Todolist";
 import {v1} from "uuid";
+import {AddItemForm} from "./AddItemForm";
 
 export type FilterValuesType = "all" | "active" | "completed";
 type TodoListType = {
@@ -10,59 +11,48 @@ type TodoListType = {
     filter: FilterValuesType
 }
 
-function App() {
+export function App() {
 
     const removeTask = (id: string, todolistID: string) => {
+        setTasks({...tasksObj, [todolistID]: tasksObj[todolistID].filter(el => el.id !== id)})
         //let tasks = tasksObj[todolistID];
         //let filteredTasks = tasks.filter(el => el.id !== id)
         //tasksObj[todolistID] = filteredTasks;
         //setTasks({...tasksObj})
-
-
-        setTasks({...tasksObj, [todolistID]: tasksObj[todolistID].filter(el => el.id !== id)})
-
-
-    }  //функция удаления строки
+    }
 
     const addTask = (title: string, todolistID: string) => {
         let newTask = {id: v1(), title: title, isDone: false};
+        setTasks({...tasksObj, [todolistID]: [newTask, ...tasksObj[todolistID]]})
         /*let tasks = tasksObj[todolistID];
         let newTasks = [newTask, ...tasks];
         tasksObj[todolistID] = newTasks;
         setTasks({...tasksObj})*/
-
-        setTasks({...tasksObj, [todolistID]: [newTask, ...tasksObj[todolistID]]})
-
-
     }
 
     const changeFilter = (todolistID: string, value: FilterValuesType) => {
+        setTodoLists(todoLists.map(el => el.id === todolistID ? {...el, filter: value} : el))
+
         /*   let todolist = todoLists.find(el => el.id === todolistID)
            if (todolist) {
                todolist.filter = value;
                setTodoLists([...todoLists])
            }*/
-
-        setTodoLists(todoLists.map(el => el.id === todolistID ? {...el, filter: value} : el))
-
     }
 
     const changeStatus = (taskId: string, isDone: boolean, todolistID: string) => {
-      /*  let tasks = tasksObj[todolistID];
-        let task = tasks.find(el => el.id === taskId);
-        if (task) {
-            task.isDone = isDone;
-        }
-        setTasks({...tasksObj})*/
-
         setTasks({...tasksObj, [todolistID]: tasksObj[todolistID].map(el => el.id === taskId ? {...el, isDone} : el)})
 
-
+        /*  let tasks = tasksObj[todolistID];
+          let task = tasks.find(el => el.id === taskId);
+          if (task) {
+              task.isDone = isDone;
+          }
+          setTasks({...tasksObj})*/
     }
 
 
     const removeTodolist = (todolistID: string) => {
-
         setTodoLists(todoLists.filter(el => el.id !== todolistID))
         delete tasksObj[todolistID]
         setTasks({...tasksObj})
@@ -92,9 +82,17 @@ function App() {
         ],
     });
 
+    const addTodolist = (title: string) => {
+        let newId = v1();
+        let newTodoList:TodoListType = {id: newId, title: title, filter: "all"};
+        setTodoLists([newTodoList,...todoLists]);
+        setTasks({...tasksObj,[newId]:[]})
+    }
+
+
     return (
         <div className="App">
-
+            <AddItemForm addItem={addTodolist}/>
             {todoLists.map(el => {
 
                 let tasksForTodoList = tasksObj[el.id];
@@ -107,7 +105,6 @@ function App() {
                 }
 
                 return (
-
                     <Todolist
                         key={el.id}
                         id={el.id}
@@ -120,13 +117,10 @@ function App() {
                         filter={el.filter}
                         removeTodolist={removeTodolist}
                     />
-
                 );
             })}
-
-
         </div>
     );
 }
 
-export default App;
+
