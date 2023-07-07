@@ -101,7 +101,12 @@ export function App() {
           })
       }*/
 
-
+    const onCompletedClickHandler = (todolistId: string, id: string, newValue: string) => {
+        setTasks({
+            ...tasksObj,
+            [todolistId]: tasksObj[todolistId].map(el => el.id === id ? {...el, title: newValue} : el)
+        })
+    }
 
     const ChangeTodolistTitle = (id: string, title: string) => {
         setTodoLists(todoLists.map(el => el.id === id ? {...el, title} : el))
