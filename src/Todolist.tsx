@@ -7,6 +7,7 @@ type TodolistType = {
     tasks: TaskType[]
     removeTask: (id: string) => void
     changeFilter: (value: FilterValueType) => void
+    addTask: () => void
 
 }
 
@@ -18,8 +19,8 @@ export const Todolist = (props: TodolistType) => {
         <div>
             <h3>{props.title}</h3>
             <div>
-                <input/>
-                <button>+</button>
+                <input onChange={(e)=>{alert(e.currentTarget.value)}}/>
+                <button onClick={()=>{props.addTask()}}>+</button>
             </div>
             <div>
                 <ul>
