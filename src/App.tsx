@@ -19,16 +19,20 @@ export const App = () => {
         {id: v1(), title: 'React', isDone: false},
         {id: v1(), title: 'TypeScript', isDone: false},
         {id: v1(), title: 'Angular', isDone: false},
-    ])
+    ]);
 
-    let [filter, setFilter] = useState<FilterValueType>("all")
+    let [filter, setFilter] = useState<FilterValueType>("all");
+
+    const changeStatus = (taskId: string, isDone: boolean) => {
+        setTasks(tasks.map(el => el.id === taskId ? {...el, isDone: isDone} : el));
+    };
 
     const removeTask = (id: string) => setTasks(tasks.filter(el => el.id !== id));
 
     const addTask = (title: string) => {
         let newTask = {id: v1(), title: title, isDone: false};
         setTasks([newTask, ...tasks]);
-    }
+    };
 
     const changeFilter = (value: FilterValueType) => setFilter(value);
 
@@ -51,6 +55,7 @@ export const App = () => {
                 removeTask={removeTask}
                 changeFilter={changeFilter}
                 addTask={addTask}
+                changeStatus={changeStatus}
             />
         </div>
     );
