@@ -1,9 +1,11 @@
-// Lesson#1 
+// Lesson#1 Установка приложения 
+//yarn create react-app my-app --template typescript
 
 
 
 
 
+Вопросы(компонента, )
 
 
 // Lesson#2
