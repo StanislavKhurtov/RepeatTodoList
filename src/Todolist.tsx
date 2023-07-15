@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ChangeEvent, useState} from "react";
 import {FilterValueType, TaskType} from "./App";
 
 
@@ -7,20 +7,32 @@ type TodolistType = {
     tasks: TaskType[]
     removeTask: (id: string) => void
     changeFilter: (value: FilterValueType) => void
-    addTask: () => void
+    addTask: (newTitle: string) => void
 
 }
 
 
 export const Todolist = (props: TodolistType) => {
 
+    const [newTitle, setNewTitle] = useState("")
+
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setNewTitle(e.currentTarget.value);
+    }
 
     return (
         <div>
             <h3>{props.title}</h3>
             <div>
-                <input onChange={(e)=>{alert(e.currentTarget.value)}}/>
-                <button onClick={()=>{props.addTask()}}>+</button>
+                <input
+                    value={newTitle}
+                    onChange={onChangeHandler}
+                />
+                <button onClick={() => {
+                    props.addTask(newTitle)
+                    setNewTitle("")
+                }}>+
+                </button>
             </div>
             <div>
                 <ul>

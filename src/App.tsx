@@ -27,8 +27,8 @@ export const App = () => {
         setTasks(tasks.filter(el => el.id !== id));
     };
 
-    const addTask = () => {
-        let newTask =  {id: v1(), title: 'New Task', isDone: false};
+    const addTask = (title: string) => {
+        let newTask = {id: v1(), title: title, isDone: false};
         setTasks([newTask, ...tasks]);
     }
 
