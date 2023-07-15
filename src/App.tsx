@@ -56,6 +56,7 @@ export const App = () => {
                 changeFilter={changeFilter}
                 addTask={addTask}
                 changeStatus={changeStatus}
+                filter={filter}
             />
         </div>
     );
