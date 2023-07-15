@@ -19,6 +19,10 @@ export const Todolist = (props: TodolistType) => {
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setNewTitle(e.currentTarget.value);
     }
+    const addTask = () => {
+        props.addTask(newTitle)
+        setNewTitle("")
+    }
 
     return (
         <div>
@@ -27,11 +31,14 @@ export const Todolist = (props: TodolistType) => {
                 <input
                     value={newTitle}
                     onChange={onChangeHandler}
+                    onKeyPress={(e) => {
+                        if (e.key === "Enter") {
+                            props.addTask(newTitle)
+                            setNewTitle("")
+                        }
+                    }}
                 />
-                <button onClick={() => {
-                    props.addTask(newTitle)
-                    setNewTitle("")
-                }}>+
+                <button onClick={addTask}>+
                 </button>
             </div>
             <div>
