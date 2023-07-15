@@ -23,18 +23,14 @@ export const App = () => {
 
     let [filter, setFilter] = useState<FilterValueType>("all")
 
-    const removeTask = (id: string) => {
-        setTasks(tasks.filter(el => el.id !== id));
-    };
+    const removeTask = (id: string) => setTasks(tasks.filter(el => el.id !== id));
 
     const addTask = (title: string) => {
         let newTask = {id: v1(), title: title, isDone: false};
         setTasks([newTask, ...tasks]);
     }
 
-    const changeFilter = (value: FilterValueType) => {
-        setFilter(value)
-    };
+    const changeFilter = (value: FilterValueType) => setFilter(value);
 
     let taskForTodolist = tasks;
 
@@ -56,7 +52,6 @@ export const App = () => {
                 changeFilter={changeFilter}
                 addTask={addTask}
             />
-
         </div>
     );
 }
