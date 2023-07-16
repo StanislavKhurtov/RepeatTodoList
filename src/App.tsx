@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import {Todolist} from "./Todolist";
 import {v1} from "uuid";
+import {AddItemForm} from "./AddItemForm";
 
 export type TaskType = {
     id: string
@@ -42,6 +43,13 @@ export const App = () => {
         setTasks({...tasks})
     };
 
+    const addTodolist = (title: string) => {
+        let newId = v1();
+        let newTodolist: TodolistType = {id: newId, title: title, filter: "all"};
+        setTodolist([newTodolist, ...todolists])
+        setTasks({...tasks,[newTodolist.id]:[]})
+    }
+
     const todolistIs_1 = v1();
     const todolistIs_2 = v1();
 
@@ -66,9 +74,9 @@ export const App = () => {
         ],
     })
 
-
     return (
         <div className="App">
+            <AddItemForm addItem={addTodolist}/>
 
             {todolists.map((el) => {
 
@@ -83,18 +91,22 @@ export const App = () => {
                 }
 
                 return (
-                    <Todolist
-                        key={el.id}
-                        id={el.id}
-                        title={el.title}
-                        tasks={taskForTodolist}
-                        removeTask={removeTask}
-                        changeFilter={changeFilter}
-                        addTask={addTask}
-                        changeStatus={changeStatus}
-                        filter={el.filter}
-                        removeTodolist={removeTodolist}
-                    />
+                    <div>
+
+                        <Todolist
+                            key={el.id}
+                            id={el.id}
+                            title={el.title}
+                            tasks={taskForTodolist}
+                            removeTask={removeTask}
+                            changeFilter={changeFilter}
+                            addTask={addTask}
+                            changeStatus={changeStatus}
+                            filter={el.filter}
+                            removeTodolist={removeTodolist}
+                        />
+                    </div>
+
                 );
             })}
         </div>
