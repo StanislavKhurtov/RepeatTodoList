@@ -19,15 +19,17 @@ export type FilterValueType = 'all' | 'completed' | 'active';
 export const App = () => {
 
 
-    const changeStatus = (taskId: string, isDone: boolean) => {
-        setTasks(tasks.map(el => el.id === taskId ? {...el, isDone: isDone} : el));
+    const changeStatus = (todolistID: string, taskId: string, isDone: boolean) => {
+        setTasks({...tasks, [todolistID]: tasks[todolistID].map(el => el.id === taskId ? {...el, isDone: isDone} : el)})
     };
 
-    const removeTask = (id: string) => setTasks(tasks.filter(el => el.id !== id));
+    const removeTask = (todolistID: string, id: string) => {
+        setTasks({...tasks, [todolistID]: tasks[todolistID].filter(el => el.id !== id)})
+    };
 
-    const addTask = (title: string) => {
+    const addTask = (todolistID: string, title: string) => {
         let newTask = {id: v1(), title: title, isDone: false};
-        setTasks([newTask, ...tasks]);
+        setTasks({...tasks,[todolistID]:[newTask, ...tasks[todolistID]]})
     };
 
     const changeFilter = (todolistID: string, value: FilterValueType) => {
@@ -38,22 +40,23 @@ export const App = () => {
     const todolistIs_2 = v1();
 
     let [todolists, setTodolist] = useState<Array<TodolistType>>([
-        {id: todolistIs_1, title: 'What to learn', filter: "active"},
-        {id: todolistIs_2, title: 'What to buy', filter: "completed"},
+        {id: todolistIs_1, title: 'What to learn', filter: "all"},
+        {id: todolistIs_2, title: 'What to buy', filter: "all"},
     ]);
+
 
     let [tasks, setTasks] = useState({
         [todolistIs_1]: [
-            {id: v1(), title: 'Book', isDone: true},
-            {id: v1(), title: 'Milk', isDone: true},
-
-        ],
-        [todolistIs_2]: [
             {id: v1(), title: 'HTML&CSS', isDone: true},
             {id: v1(), title: 'JavaScript', isDone: true},
             {id: v1(), title: 'React', isDone: false},
             {id: v1(), title: 'TypeScript', isDone: false},
             {id: v1(), title: 'Angular', isDone: false},
+
+        ],
+        [todolistIs_2]: [
+            {id: v1(), title: 'Book', isDone: true},
+            {id: v1(), title: 'Milk', isDone: true},
         ],
     })
 
@@ -72,7 +75,6 @@ export const App = () => {
                 if (el.filter === 'active') {
                     taskForTodolist = taskForTodolist.filter(el => el.isDone === false)
                 }
-
 
                 return (
                     <Todolist
