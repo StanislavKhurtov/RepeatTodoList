@@ -3,6 +3,7 @@ import {FilterValueType, TaskType} from "./App";
 
 
 type TodolistType = {
+    id:string
     title: string
     tasks: TaskType[]
     removeTask: (id: string) => void
