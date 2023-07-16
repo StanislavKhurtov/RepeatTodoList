@@ -23,20 +23,20 @@ yarn create react-app my-app --template typescript
   </div>
 
 
-// let tasks1 = [
-// {id: 1, title: 'HTML&CSS', isDone: true},
-// {id: 1, title: 'JavaScript', isDone: true},
-// {id: 1, title: 'React', isDone: false},
-// {id: 1, title: 'TypeScript', isDone: false},
-// {id: 1, title: 'Angular', isDone: false},
-//  ]
-//  
-// let tasks2 = [
-// {id: 1, title: 'Terminator', isDone: true},
-// {id: 1, title: 'XXX', isDone: false},
-// {id: 1, title: 'John Weak', isDone: false},
-//  ]
-//
+ let tasks1 = [
+ {id: 1, title: 'HTML&CSS', isDone: true},
+ {id: 1, title: 'JavaScript', isDone: true},
+ {id: 1, title: 'React', isDone: false},
+ {id: 1, title: 'TypeScript', isDone: false},
+ {id: 1, title: 'Angular', isDone: false},
+  ]
+
+let tasks2 = [
+{id: 1, title: 'Terminator', isDone: true},
+{id: 1, title: 'XXX', isDone: false},
+{id: 1, title: 'John Weak', isDone: false},
+ ]
+
 
 Вопросы(компонента,props, debbuger )
 
@@ -67,26 +67,34 @@ yarn create react-app my-app --template typescript
 //====================================================
 // Lesson#4
 
-начало. активный чекбокс
-trim()
-title is required
-подсветка кнопок
+ - начало. активный чекбокс
+ - trim()
+ - title is required
+ - подсветка кнопок
 
 //====================================================
 // Lesson#5
 
-массив Todolists
-фильтрация тасок для каждого todolist
-где хранить таски
-debugger
-удаление todolists
-удаление todolist tasks из стейта
+- массив Todolists
+- фильтрация тасок для каждого todolist
+- где хранить таски
+- debugger
+- удаление todolists
+- удаление todolist tasks из стейта
 
 
 //====================================================
 // Lesson#6
 
-
+ – пере использование input
+ – обертка addTask
+ – добавляем новый todolist
+ – типизация tasksObj
+ – редактирование span
+ – EditableSpan
+ – редактирование todolist name
+ – debugger (как работает editable span)
+ – резюме (рисовалка)
 
 //====================================================
 // Lesson#7
