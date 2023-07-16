@@ -1,14 +1,10 @@
 import React, {useState} from 'react';
 import './App.css';
-import {Todolist} from "./Todolist";
+import {TaskType, Todolist} from "./Todolist";
 import {v1} from "uuid";
 import {AddItemForm} from "./AddItemForm";
 
-export type TaskType = {
-    id: string
-    title: string
-    isDone: boolean
-}
+
 export type TodolistType = {
     id: string
     title: string
@@ -17,8 +13,12 @@ export type TodolistType = {
 
 export type FilterValueType = 'all' | 'completed' | 'active';
 
-export const App = () => {
+type TasksStateType = {
+    [key:string] : Array<TaskType>
+}
 
+
+export const App = () => {
 
     const changeStatus = (todolistID: string, taskId: string, isDone: boolean) => {
         setTasks({...tasks, [todolistID]: tasks[todolistID].map(el => el.id === taskId ? {...el, isDone: isDone} : el)})
@@ -59,7 +59,7 @@ export const App = () => {
     ]);
 
 
-    let [tasks, setTasks] = useState({
+    let [tasks, setTasks] = useState<TasksStateType>({
         [todolistIs_1]: [
             {id: v1(), title: 'HTML&CSS', isDone: true},
             {id: v1(), title: 'JavaScript', isDone: true},

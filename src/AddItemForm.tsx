@@ -29,8 +29,6 @@ export const AddItemForm = (props: AddItemFormPropsType) => {
         } else {
             setError("Title is requared");
         }
-
-
     };
 
     const onNewTitleChangeHandler = (e: ChangeEvent<HTMLInputElement>) => setNewTitle(e.currentTarget.value);

@@ -1,6 +1,7 @@
 import React, {ChangeEvent} from "react";
-import {FilterValueType, TaskType} from "./App";
+import {FilterValueType} from "./App";
 import {AddItemForm} from "./AddItemForm";
+import {EditebleSpan} from "./EditebleSpan";
 
 
 type TodolistType = {
@@ -16,6 +17,12 @@ type TodolistType = {
 
 }
 
+export type TaskType = {
+    id: string
+    title: string
+    isDone: boolean
+}
+
 
 export const Todolist = (props: TodolistType) => {
 
@@ -29,7 +36,7 @@ export const Todolist = (props: TodolistType) => {
         props.removeTodolist(props.id)
     };
 
-    const addTask= (newTitle: string) => {
+    const addTask = (newTitle: string) => {
         props.addTask(props.id, newTitle)
     }
 
@@ -37,7 +44,7 @@ export const Todolist = (props: TodolistType) => {
     return (
         <div>
             <h3>
-                {props.title}
+                <EditebleSpan title={props.title}/>
                 <button onClick={removeTodolist}>x</button>
             </h3>
             <AddItemForm addItem={addTask}/>
@@ -55,7 +62,8 @@ export const Todolist = (props: TodolistType) => {
                             <li key={el.id} className={el.isDone ? "isDone" : ''}>
                                 <button onClick={removeTask}>x</button>
                                 <input type="checkbox" checked={el.isDone}
-                                       onChange={onChangeHandler}/><span>{el.title}</span>
+                                       onChange={onChangeHandler}/>
+                                <EditebleSpan title={el.title}/>
                             </li>
                         );
                     })}
@@ -74,6 +82,5 @@ export const Todolist = (props: TodolistType) => {
         </div>
     );
 }
-
 
 
