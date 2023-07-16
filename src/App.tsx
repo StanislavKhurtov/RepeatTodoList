@@ -34,12 +34,13 @@ export const App = () => {
 
     const changeFilter = (todolistID: string, value: FilterValueType) => {
         setTodolist(todolists.map(el => el.id === todolistID ? {...el, filter: value} : el))
-    }
+    };
 
     const removeTodolist = (todolistId: string) => {
         setTodolist(todolists.filter(el => el.id !== todolistId));
         delete tasks[todolistId];
-    }
+        setTasks({...tasks})
+    };
 
     const todolistIs_1 = v1();
     const todolistIs_2 = v1();
