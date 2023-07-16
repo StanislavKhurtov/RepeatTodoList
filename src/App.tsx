@@ -29,11 +29,16 @@ export const App = () => {
 
     const addTask = (todolistID: string, title: string) => {
         let newTask = {id: v1(), title: title, isDone: false};
-        setTasks({...tasks,[todolistID]:[newTask, ...tasks[todolistID]]})
+        setTasks({...tasks, [todolistID]: [newTask, ...tasks[todolistID]]})
     };
 
     const changeFilter = (todolistID: string, value: FilterValueType) => {
         setTodolist(todolists.map(el => el.id === todolistID ? {...el, filter: value} : el))
+    }
+
+    const removeTodolist = (todolistId: string) => {
+        setTodolist(todolists.filter(el => el.id !== todolistId));
+        delete tasks[todolistId];
     }
 
     const todolistIs_1 = v1();
@@ -87,6 +92,7 @@ export const App = () => {
                         addTask={addTask}
                         changeStatus={changeStatus}
                         filter={el.filter}
+                        removeTodolist={removeTodolist}
                     />
                 );
             })}
