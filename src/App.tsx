@@ -14,7 +14,7 @@ export type TodolistType = {
 export type FilterValueType = 'all' | 'completed' | 'active';
 
 type TasksStateType = {
-    [key:string] : Array<TaskType>
+    [key: string]: Array<TaskType>
 }
 
 
@@ -47,7 +47,11 @@ export const App = () => {
         let newId = v1();
         let newTodolist: TodolistType = {id: newId, title: title, filter: "all"};
         setTodolist([newTodolist, ...todolists])
-        setTasks({...tasks,[newTodolist.id]:[]})
+        setTasks({...tasks, [newTodolist.id]: []})
+    };
+
+    const changeTaskTitle = (todolistId: string, id: string, newValue: string) => {
+        setTasks({...tasks, [todolistId]: tasks[todolistId].map(el => el.id === id ? {...el, title: newValue} : el)})
     }
 
     const todolistIs_1 = v1();
@@ -104,6 +108,7 @@ export const App = () => {
                             changeStatus={changeStatus}
                             filter={el.filter}
                             removeTodolist={removeTodolist}
+                            changeTaskTitle={changeTaskTitle}
                         />
                     </div>
 

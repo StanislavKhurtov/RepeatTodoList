@@ -14,6 +14,7 @@ type TodolistType = {
     changeStatus: (todolistID: string, taskId: string, isDone: boolean) => void
     filter: FilterValueType
     removeTodolist: (todolistId: string) => void
+    changeTaskTitle: (todolistId: string, id: string, newValue: string) => void
 
 }
 
@@ -44,7 +45,7 @@ export const Todolist = (props: TodolistType) => {
     return (
         <div>
             <h3>
-                <EditebleSpan title={props.title}/>
+                <EditebleSpan title={props.title} onChange={() => {}}/>
                 <button onClick={removeTodolist}>x</button>
             </h3>
             <AddItemForm addItem={addTask}/>
@@ -58,12 +59,16 @@ export const Todolist = (props: TodolistType) => {
                             props.changeStatus(props.id, el.id, e.currentTarget.checked)
                         }
 
+                        const onChangeTitleHandler = (newValue: string) => {
+                            props.changeTaskTitle(props.id, el.id, newValue)
+                        }
+
                         return (
                             <li key={el.id} className={el.isDone ? "isDone" : ''}>
                                 <button onClick={removeTask}>x</button>
                                 <input type="checkbox" checked={el.isDone}
                                        onChange={onChangeHandler}/>
-                                <EditebleSpan title={el.title}/>
+                                <EditebleSpan title={el.title} onChange={onChangeTitleHandler}/>
                             </li>
                         );
                     })}
