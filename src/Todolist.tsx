@@ -2,6 +2,8 @@ import React, {ChangeEvent} from "react";
 import {FilterValueType} from "./App";
 import {AddItemForm} from "./AddItemForm";
 import {EditebleSpan} from "./EditebleSpan";
+import {Button, IconButton} from "@material-ui/core";
+import {Delete} from "@material-ui/icons";
 
 
 type TodolistType = {
@@ -51,7 +53,9 @@ export const Todolist = (props: TodolistType) => {
         <div>
             <h3>
                 <EditebleSpan title={props.title} onChange={changeTodolistTitle}/>
-                <button onClick={removeTodolist}>x</button>
+                <IconButton size="small" onClick={removeTodolist}>
+                    <Delete />
+                </IconButton>
             </h3>
             <AddItemForm addItem={addTask}/>
             <div>
@@ -70,10 +74,12 @@ export const Todolist = (props: TodolistType) => {
 
                         return (
                             <li key={el.id} className={el.isDone ? "isDone" : ''}>
-                                <button onClick={removeTask}>x</button>
                                 <input type="checkbox" checked={el.isDone}
                                        onChange={onChangeHandler}/>
                                 <EditebleSpan title={el.title} onChange={onChangeTitleHandler}/>
+                                <IconButton size="small" onClick={removeTask}>
+                                    <Delete />
+                                </IconButton>
                             </li>
                         );
                     })}
