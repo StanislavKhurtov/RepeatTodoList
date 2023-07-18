@@ -1,6 +1,6 @@
 import {FilterValueType, TodolistType} from "../App";
 import {v1} from "uuid";
-import {todolistsReducer} from "./todolist-reducer"
+import {ChangeTodolistFilterActionType, ChangeTodolistTitleActionType, todolistsReducer} from "./todolist-reducer"
 
 test('correct todolist should be removed', () => {
     let todolistId1 = v1()
@@ -45,7 +45,7 @@ test('correct todolist should change its name', () => {
         {id: todolistId2, title: 'What to buy', filter: 'all'}
     ]
 
-    const action = {
+    const action: ChangeTodolistTitleActionType = {
         type: 'CHANGE-TODOLIST-TITLE',
         id: todolistId2,
         title: newTodolistTitle
@@ -68,7 +68,7 @@ test('correct filter of todolist should be changed', () => {
         {id: todolistId2, title: 'What to buy', filter: 'all'}
     ]
 
-    const action = {
+    const action: ChangeTodolistFilterActionType = {
         type: 'CHANGE-TODOLIST-FILTER',
         id: todolistId2,
         filter: newFilter
