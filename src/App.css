@@ -19,7 +19,6 @@
 
 .activeFilter {
     background-color: cornflowerblue;
-    border: none;
 }
 
 .isDone {
@@ -27,7 +26,3 @@
 }
 
 
-.buttons {
-    display: flex;
-    gap: 15px;
-}
