@@ -1,1 +1,16 @@
+.todolist {
+    display: flex;
+    flex-direction: column;
+   height: 100%;
 
+
+}
+
+.items {
+    flex: 1 1 auto;
+}
+
+.btns {
+    display: flex;
+    gap: 10px;
+}

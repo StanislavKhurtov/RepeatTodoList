@@ -50,15 +50,15 @@ export const Todolist = (props: TodolistType) => {
 
 
     return (
-        <div>
-            <h3>
+        <div className={'todolist'}>
+            <h3 className={"todolistTitle"}>
                 <EditebleSpan title={props.title} onChange={changeTodolistTitle}/>
                 <IconButton size="small" onClick={removeTodolist}>
                     <Delete />
                 </IconButton>
             </h3>
             <AddItemForm addItem={addTask}/>
-            <div>
+            <div className={'items'}>
                 <ul>
                     {props.tasks.map(el => {
 
@@ -85,7 +85,7 @@ export const Todolist = (props: TodolistType) => {
                     })}
                 </ul>
             </div>
-            <div>
+            <div className={'btns'}>
                 <Button variant={props.filter === 'all' ? 'contained' : "text"}  onClick={onAllClickHandler}>All</Button>
                 <Button color={"primary"} variant={props.filter === 'active' ? 'contained' : "text"} onClick={onActiveClickHandler}>Active</Button>
                 <Button color={"secondary"} variant={props.filter === 'completed' ? 'contained' : "text"} onClick={onCompletedClickHandler}>Completed</Button>
