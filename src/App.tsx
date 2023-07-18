@@ -46,8 +46,7 @@ export const App = () => {
     };
 
     const addTodolist = (title: string) => {
-        let newId = v1();
-        let newTodolist: TodolistType = {id: newId, title: title, filter: "all"};
+        let newTodolist: TodolistType = {id:v1(), title: title, filter: "all"};
         setTodolist([newTodolist, ...todolists])
         setTasks({...tasks, [newTodolist.id]: []})
     };
