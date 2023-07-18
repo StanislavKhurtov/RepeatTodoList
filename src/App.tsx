@@ -67,7 +67,6 @@ export const App = () => {
         {id: todolistIs_2, title: 'What to buy', filter: "all"},
     ]);
 
-
     let [tasks, setTasks] = useState<TasksStateType>({
         [todolistIs_1]: [
             {id: v1(), title: 'HTML&CSS', isDone: true},
