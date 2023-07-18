@@ -42,10 +42,10 @@ export const AddItemForm = (props: AddItemFormPropsType) => {
                 value={newTitle}
                 onChange={onNewTitleChangeHandler}
                 onKeyPress={onKeyPressHandler}
-                className={error ? 'error' : ''}
+                error={!!error}
+                helperText={error}
             />
             <Button onClick={addTask} variant={"contained"} color={'primary'}>+</Button>
-            {error && <div className='errorMessage'>{error}</div>}
         </div>
     );
 }
