@@ -86,14 +86,9 @@ export const Todolist = (props: TodolistType) => {
                 </ul>
             </div>
             <div>
-                <button className={props.filter === 'all' ? 'activeFilter' : ""} onClick={onAllClickHandler}>All
-                </button>
-                <button className={props.filter === 'active' ? 'activeFilter' : ""}
-                        onClick={onActiveClickHandler}>Active
-                </button>
-                <button className={props.filter === 'completed' ? 'activeFilter' : ""}
-                        onClick={onCompletedClickHandler}>Completed
-                </button>
+                <Button variant={props.filter === 'all' ? 'contained' : "text"}  onClick={onAllClickHandler}>All</Button>
+                <Button color={"primary"} variant={props.filter === 'active' ? 'contained' : "text"} onClick={onActiveClickHandler}>Active</Button>
+                <Button color={"secondary"} variant={props.filter === 'completed' ? 'contained' : "text"} onClick={onCompletedClickHandler}>Completed</Button>
             </div>
         </div>
     );
