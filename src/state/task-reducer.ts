@@ -21,6 +21,7 @@ export type ChangeTaskTitleActionType = {
     id: string
     title: string
 }
+
 export type ChangeTaskStatusActionType = {
     type: 'CHANGE-STATUS'
     todolistID: string

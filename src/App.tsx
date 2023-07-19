@@ -59,16 +59,16 @@ export const App = () => {
         setTodolist(todolists.map(el => el.id === todolistId ? {...el, title: newTitle} : el))
     };
 
-    const todolistIs_1 = v1();
-    const todolistIs_2 = v1();
+    const todolistId_1 = v1();
+    const todolistId_2 = v1();
 
     let [todolists, setTodolist] = useState<Array<TodolistType>>([
-        {id: todolistIs_1, title: 'What to learn', filter: "all"},
-        {id: todolistIs_2, title: 'What to buy', filter: "all"},
+        {id: todolistId_1, title: 'What to learn', filter: "all"},
+        {id: todolistId_2, title: 'What to buy', filter: "all"},
     ]);
 
     let [tasks, setTasks] = useState<TasksStateType>({
-        [todolistIs_1]: [
+        [todolistId_1]: [
             {id: v1(), title: 'HTML&CSS', isDone: true},
             {id: v1(), title: 'JavaScript', isDone: true},
             {id: v1(), title: 'React', isDone: false},
@@ -76,7 +76,7 @@ export const App = () => {
             {id: v1(), title: 'Angular', isDone: false},
 
         ],
-        [todolistIs_2]: [
+        [todolistId_2]: [
             {id: v1(), title: 'Book', isDone: true},
             {id: v1(), title: 'Milk', isDone: true},
         ],
