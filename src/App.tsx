@@ -15,7 +15,7 @@ export type TodolistType = {
 
 export type FilterValueType = 'all' | 'completed' | 'active';
 
-type TasksStateType = {
+export type TasksStateType = {
     [key: string]: Array<TaskType>
 }
 
@@ -35,6 +35,13 @@ export const App = () => {
         setTasks({...tasks, [todolistID]: [newTask, ...tasks[todolistID]]})
     };
 
+    const changeTaskTitle = (todolistId: string, id: string, newValue: string) => {
+        setTasks({...tasks, [todolistId]: tasks[todolistId].map(el => el.id === id ? {...el, title: newValue} : el)})
+    };
+
+
+
+
     const changeFilter = (todolistID: string, value: FilterValueType) => {
         setTodolist(todolists.map(el => el.id === todolistID ? {...el, filter: value} : el))
     };
@@ -49,10 +56,6 @@ export const App = () => {
         let newTodolist: TodolistType = {id:v1(), title: title, filter: "all"};
         setTodolist([newTodolist, ...todolists])
         setTasks({...tasks, [newTodolist.id]: []})
-    };
-
-    const changeTaskTitle = (todolistId: string, id: string, newValue: string) => {
-        setTasks({...tasks, [todolistId]: tasks[todolistId].map(el => el.id === id ? {...el, title: newValue} : el)})
     };
 
     const changeTodolistTitle = (todolistId: string, newTitle: string) => {
