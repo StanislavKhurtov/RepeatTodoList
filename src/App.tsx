@@ -39,9 +39,6 @@ export const App = () => {
         setTasks({...tasks, [todolistId]: tasks[todolistId].map(el => el.id === id ? {...el, title: newValue} : el)})
     };
 
-
-
-
     const changeFilter = (todolistID: string, value: FilterValueType) => {
         setTodolist(todolists.map(el => el.id === todolistID ? {...el, filter: value} : el))
     };
