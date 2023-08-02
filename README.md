@@ -144,17 +144,17 @@ Lesson#9
 
 Lesson#10 - Todolist for student (useReducer, redux)
 
-1:31 - Reducers - React
-28:35 - Redux
-33:56 - createStore
-37:12 - combineReducers
-39:48 - AppRootStateType
-43:46 - Provider from react-redux
-45:55 - return state default
-50:03 - initialState
-55:49 - useDispatch react-redux
-57:05 - useSelector react-redux
-1:15:03 - задание for Advanced Level
+- Reducers - React
+- Redux
+- createStore
+- combineReducers
+- AppRootStateType
+- Provider from react-redux
+- return state default
+- initialState
+- useDispatch react-redux
+- useSelector react-redux
+- задание for Advanced Level
 
 
 //***********************************************************//
