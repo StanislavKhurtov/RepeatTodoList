@@ -147,6 +147,7 @@ Lesson#10 - Todolist for student (useReducer, redux)
 - initialState
 - useDispatch react-redux
 - useSelector react-redux
+
 - задание for Advanced Level
 
 установка Redux
