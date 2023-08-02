@@ -29,8 +29,8 @@ export type TasksStateType = {
 
 export const AppWithRedux = () => {
 
-    const todolistId_1 = v1();
-    const todolistId_2 = v1();
+let todolistId_1 = v1();
+let todolistId_2 = v1();
 
     let [todolists, dispatchToTodolistReducer] = useReducer(todolistsReducer, [
         {id: todolistId_1, title: 'What to learn', filter: "all"},
@@ -66,9 +66,8 @@ export const AppWithRedux = () => {
     };
 
     const changeStatus = (todolistId: string, taskId: string, isDone: boolean) => {
-       dispatchToTaskReducer(changeTaskStatusAC(todolistId,taskId,isDone));
+        dispatchToTaskReducer(changeTaskStatusAC(todolistId, taskId, isDone));
     };
-
 
 
     const removeTodolist = (todolistId: string) => {
@@ -82,11 +81,11 @@ export const AppWithRedux = () => {
     };
 
     const changeTodolistTitle = (todolistId: string, newTitle: string) => {
-        dispatchToTodolistReducer(changeTodolistTitleAC(todolistId,newTitle))
+        dispatchToTodolistReducer(changeTodolistTitleAC(todolistId, newTitle))
     };
 
     const changeFilter = (todolistId: string, value: FilterValueType) => {
-       dispatchToTodolistReducer(changeTodolistFilterAC(todolistId,value))
+        dispatchToTodolistReducer(changeTodolistFilterAC(todolistId, value))
     };
 
 
