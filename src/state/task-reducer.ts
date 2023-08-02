@@ -74,7 +74,7 @@ export const tasksReducer = (state: TasksStateType, action: ActionType): TasksSt
             return newState;
         }
         default:
-            throw new Error("I don't understand this type")
+            return state;
     }
 };
 
