@@ -1,10 +1,18 @@
-import React, {useState} from 'react';
+import React, {useReducer} from 'react';
 import './App.css';
 import {TaskType, Todolist} from "./Todolist";
 import {v1} from "uuid";
 import {AddItemForm} from "./AddItemForm";
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@material-ui/core";
 import {Menu} from "@material-ui/icons";
+import {
+    addTodolistAC,
+    changeTodolistFilterAC,
+    changeTodolistTitleAC,
+    removeTodolistAC,
+    todolistsReducer
+} from "./state/todolist-reducer";
+import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC, tasksReducer} from "./state/task-reducer";
 
 
 export type TodolistType = {
@@ -25,12 +33,12 @@ export const AppWithReducers = () => {
     const todolistId_1 = v1();
     const todolistId_2 = v1();
 
-    let [todolists, setTodolist] = useState<Array<TodolistType>>([
+    let [todolists, dispatchToTodolistReducer] = useReducer(todolistsReducer, [
         {id: todolistId_1, title: 'What to learn', filter: "all"},
         {id: todolistId_2, title: 'What to buy', filter: "all"},
     ]);
 
-    let [tasks, setTasks] = useState<TasksStateType>({
+    let [tasks, dispatchToTaskReducer] = useReducer(tasksReducer, {
         [todolistId_1]: [
             {id: v1(), title: 'HTML&CSS', isDone: true},
             {id: v1(), title: 'JavaScript', isDone: true},
@@ -45,42 +53,43 @@ export const AppWithReducers = () => {
         ],
     });
 
-    const changeStatus = (todolistID: string, taskId: string, isDone: boolean) => {
-        setTasks({...tasks, [todolistID]: tasks[todolistID].map(el => el.id === taskId ? {...el, isDone: isDone} : el)})
+
+    const removeTask = (todolistId: string, id: string) => {
+        dispatchToTaskReducer(removeTaskAC(todolistId, id));
     };
 
-    const removeTask = (todolistID: string, id: string) => {
-        setTasks({...tasks, [todolistID]: tasks[todolistID].filter(el => el.id !== id)})
-    };
-
-    const addTask = (todolistID: string, title: string) => {
-        let newTask = {id: v1(), title: title, isDone: false};
-        setTasks({...tasks, [todolistID]: [newTask, ...tasks[todolistID]]})
+    const addTask = (todolistId: string, title: string) => {
+        dispatchToTaskReducer(addTaskAC(todolistId, title));
     };
 
     const changeTaskTitle = (todolistId: string, id: string, newValue: string) => {
-        setTasks({...tasks, [todolistId]: tasks[todolistId].map(el => el.id === id ? {...el, title: newValue} : el)})
+        dispatchToTaskReducer(changeTaskTitleAC(todolistId, id, newValue));
     };
 
-    const changeFilter = (todolistID: string, value: FilterValueType) => {
-        setTodolist(todolists.map(el => el.id === todolistID ? {...el, filter: value} : el))
+    const changeStatus = (todolistId: string, taskId: string, isDone: boolean) => {
+       dispatchToTaskReducer(changeTaskStatusAC(todolistId,taskId,isDone));
     };
+
+
 
     const removeTodolist = (todolistId: string) => {
-        setTodolist(todolists.filter(el => el.id !== todolistId));
-        delete tasks[todolistId];
-        setTasks({...tasks})
+        dispatchToTaskReducer(removeTodolistAC(todolistId));
+        dispatchToTodolistReducer(removeTodolistAC(todolistId));
     };
 
     const addTodolist = (title: string) => {
-        let newTodolist: TodolistType = {id:v1(), title: title, filter: "all"};
-        setTodolist([newTodolist, ...todolists])
-        setTasks({...tasks, [newTodolist.id]: []})
+        dispatchToTaskReducer(addTodolistAC(title));
+        dispatchToTodolistReducer(addTodolistAC(title));
     };
 
     const changeTodolistTitle = (todolistId: string, newTitle: string) => {
-        setTodolist(todolists.map(el => el.id === todolistId ? {...el, title: newTitle} : el))
+        dispatchToTodolistReducer(changeTodolistTitleAC(todolistId,newTitle))
     };
+
+    const changeFilter = (todolistId: string, value: FilterValueType) => {
+       dispatchToTodolistReducer(changeTodolistFilterAC(todolistId,value))
+    };
+
 
     return (
         <div className="App">
