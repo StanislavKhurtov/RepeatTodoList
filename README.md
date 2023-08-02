@@ -1,6 +1,6 @@
 //***********************************************************//
 
-Lesson#1 
+Lesson#1
 
 Установка приложения
 yarn create react-app my-app --template typescript
@@ -26,20 +26,19 @@ yarn create react-app my-app --template typescript
   </div>
 
 
- let tasks1 = [
- {id: 1, title: 'HTML&CSS', isDone: true},
- {id: 1, title: 'JavaScript', isDone: true},
- {id: 1, title: 'React', isDone: false},
- {id: 1, title: 'TypeScript', isDone: false},
- {id: 1, title: 'Angular', isDone: false},
-  ]
+let tasks1 = [
+{id: 1, title: 'HTML&CSS', isDone: true},
+{id: 1, title: 'JavaScript', isDone: true},
+{id: 1, title: 'React', isDone: false},
+{id: 1, title: 'TypeScript', isDone: false},
+{id: 1, title: 'Angular', isDone: false},
+]
 
 let tasks2 = [
 {id: 1, title: 'Terminator', isDone: true},
 {id: 1, title: 'XXX', isDone: false},
 {id: 1, title: 'John Weak', isDone: false},
- ]
-
+]
 
 Вопросы(компонента,props, debbuger )
 
@@ -47,37 +46,34 @@ let tasks2 = [
 
 Lesson#2
 
- - "map"
- - удаление задач
- - функция для удаления задачи
- - фильтрация массива с task'ами
- - Local State (useState)
- - фильтрация задач (all | active | completed)
-
-
+- "map"
+- удаление задач
+- функция для удаления задачи
+- фильтрация массива с task'ами
+- Local State (useState)
+- фильтрация задач (all | active | completed)
 
 //***********************************************************//
 
 Lesson#3
 
- - uuid :  yarn add uuid @types/uuid
- - про key
- - addTask
- - чтение значения из input
- - очистка поля input (onChange)
- - добавление task при нажатии на enter (onKeyPress)
- - рефакторинг кода
- - рефакторинг функции удаления
+- uuid :  yarn add uuid @types/uuid
+- про key
+- addTask
+- чтение значения из input
+- очистка поля input (onChange)
+- добавление task при нажатии на enter (onKeyPress)
+- рефакторинг кода
+- рефакторинг функции удаления
 
 //***********************************************************//
 
-
 Lesson#4
 
- - начало. активный чекбокс
- - trim()
- - title is required
- - подсветка кнопок
+- начало. активный чекбокс
+- trim()
+- title is required
+- подсветка кнопок
 
 //***********************************************************//
 
@@ -90,32 +86,29 @@ Lesson#5
 - удаление todolists
 - удаление todolist tasks из стейта
 
-
 //***********************************************************//
 
 Lesson#6
 
- – пере использование input
- – обертка addTask
- – добавляем новый todolist
- – типизация tasksObj
- – редактирование span
- – EditableSpan
- – редактирование todolist name
- – debugger (как работает editable span)
- – резюме (рисовалка)
+– пере использование input
+– обертка addTask
+– добавляем новый todolist
+– типизация tasksObj
+– редактирование span
+– EditableSpan
+– редактирование todolist name
+– debugger (как работает editable span)
+– резюме (рисовалка)
 
 //***********************************************************//
 
 Lesson#7
 
- - кнопки
- - инпут
- - чекбокс
- - AppBar
- - Container, grid
-
-
+- кнопки
+- инпут
+- чекбокс
+- AppBar
+- Container, grid
 
 //***********************************************************//
 
@@ -135,12 +128,12 @@ Lesson#8
 //***********************************************************//
 
 Lesson#9
+
 - tasks reducer
-– тесты
-– white board
+  – тесты
+  – white board
 
 //***********************************************************//
-
 
 Lesson#10 - Todolist for student (useReducer, redux)
 
@@ -156,15 +149,15 @@ Lesson#10 - Todolist for student (useReducer, redux)
 - useSelector react-redux
 - задание for Advanced Level
 
+установка Redux
+-yarn add redux react-redux @types/react-redux
 
 //***********************************************************//
 
 Lesson#11
 
-
 //***********************************************************//
 
 Lesson#12
-
 
 //***********************************************************//
