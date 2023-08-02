@@ -27,7 +27,6 @@ export type TasksStateType = {
     [key: string]: Array<TaskType>
 }
 
-
 export const AppWithRedux = () => {
 
     const todolistId_1 = v1();
