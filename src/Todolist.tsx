@@ -57,6 +57,7 @@ export const Todolist = (props: Props) => {
                         <input
                             type="checkbox"
                             checked={task.isDone}
+                            className={'todo__input'}
                             onChange={(e) => {
                                 props.changeTaskStatus(props.id, task.id, e.currentTarget.checked)
                             }}/>

@@ -4,6 +4,7 @@ import React, {ChangeEvent, useState} from "react";
 type Props = {
     title: string
     onChange: (title: string) => void
+    className?:string
 }
 export const EditableSpan = (props: Props) => {
     let [editMode, setEditMode] = useState<boolean>(false)

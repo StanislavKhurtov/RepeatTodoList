@@ -1,8 +1,7 @@
 //todo
 
 .todo {
-  flex: 1 0 30%;
-  max-width: 290px;
+  flex: 1 0 25%;
   border: 1px solid #FFFFFF;
   padding: 10px;
   border-radius: 5px;
@@ -35,8 +34,11 @@
   display: flex;
   gap: 10px;
   align-items: center;
-
 }
+.todo__item span {
+  padding: 2px 0 0;
+}
+
 .todo__title {
   display: flex;
   align-items: center;
@@ -121,4 +123,13 @@
 .header__logo {
   font-size: 18px;
   line-height: 135%;
+}
+
+
+//editebleSpan
+
+.todo__input {
+  display: flex;
+  align-items: center;
+
 }
