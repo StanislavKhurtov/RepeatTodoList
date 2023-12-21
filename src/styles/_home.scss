@@ -17,14 +17,10 @@
 }
 
 .todo__btnDelete {
-  padding: 0 5px;
-  border: 1px solid green;
-  border-radius: 5px;
   transition: all 0.4s;
 
   &:hover {
     color: black;
-    border: 1px solid black;
   }
 }
 
@@ -39,6 +35,12 @@
   display: flex;
   gap: 10px;
   align-items: center;
+
+}
+.todo__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 
@@ -55,9 +57,11 @@
 }
 
 .item__btn {
-  padding: 0 5px;
-  border-radius: 5px;
-  border: 1px solid #FFFFFF;
+  transition: all 0.4s;
+
+  &:hover {
+    color: black;
+  }
 }
 
 

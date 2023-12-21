@@ -4,6 +4,7 @@ import clsx from "clsx";
 import {AddItemForm} from "./components/AddItemForm/AddItemForm";
 import {EditableSpan} from "./components/EditableSpan/EditableSpan";
 import {PlusSquareOutline} from "./assets";
+import Trash from "./assets/trash";
 
 export type TaskType = {
     id: string
@@ -42,7 +43,7 @@ export const Todolist = (props: Props) => {
         <div className="todo__body">
             <h3 className='todo__title title'>
                 <EditableSpan title={props.title} onChange={changeTodolistTitle}/>
-                <button className={'todo__btnDelete'} onClick={removeTodolist}>x</button>
+                <button className={'todo__btnDelete'} onClick={removeTodolist}>{<Trash className={'icon'}/>}</button>
             </h3>
             <AddItemForm addItem={addTask} trigger={<PlusSquareOutline className={'icon'}/>}/>
             <ul className='todo__items'>
@@ -60,7 +61,7 @@ export const Todolist = (props: Props) => {
                                 props.changeTaskStatus(props.id, task.id, e.currentTarget.checked)
                             }}/>
                         <EditableSpan title={task.title} onChange={changeTaskTitle}/>
-                        <button className={'item__btn'} onClick={onClickHandler}>x</button>
+                        <button className={'item__btn'} onClick={onClickHandler}>{<Trash className={'icon'}/>}</button>
                     </li>
                 })}
             </ul>

@@ -4,15 +4,16 @@ import {v1} from "uuid";
 import {AddItemForm} from "./components/AddItemForm/AddItemForm";
 import {Header} from "./components/Header/header";
 import Trash from "./assets/trash";
+import {PlusSquareOutline} from "./assets";
 
 export type FilterPropsType = 'all' | 'active' | 'completed'
 
-type TodolistsType = {
+export type TodolistsType = {
     id: string
     title: string
     filter: FilterPropsType
 }
-type TasksStateType = {
+export type TasksStateType = {
     [key: string]: TaskType[]
 }
 export const App = () => {
@@ -20,7 +21,7 @@ export const App = () => {
     let todolistID1 = v1()
     let todolistID2 = v1()
 
-    let [todolists, setTodolists] = useState<Array<TodolistsType>>([
+    let [todolists, setTodolists] = useState<TodolistsType[]>([
         {id: todolistID1, title: 'What to learn', filter: 'all'},
         {id: todolistID2, title: 'What to buy', filter: 'all'},
     ])
@@ -84,7 +85,7 @@ export const App = () => {
         <div className="App">
             <Header/>
             <div className="home__container">
-                <AddItemForm addItem={addTodolist} label={'New Todolist'} trigger={<Trash className={'icon'}/>}/>
+                <AddItemForm addItem={addTodolist} label={'New Todolist'} trigger={<PlusSquareOutline className={'icon'}/>}/>
                 {todolists.map(todolist => {
 
                     let allTodolistsTasks = tasks[todolist.id];
