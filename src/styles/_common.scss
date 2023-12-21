@@ -1,0 +1,39 @@
+[class*='__container'] {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.home__container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-top: 50px;
+}
+
+.activeFilter {
+  background-color: aqua;
+  color: black;
+}
+
+.isDone {
+  transition: 0.4s;
+  opacity: 0.5;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: aqua;
+transition: color 0.4s;
+  &:hover {
+    color: darkmagenta;
+  }
+}
+
+

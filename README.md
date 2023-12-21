@@ -1,164 +1,46 @@
-//***********************************************************//
+# Getting Started with Create React App
 
-Lesson#1
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Установка приложения
-yarn create react-app my-app --template typescript
+## Available Scripts
 
-  <div>
-     <h3>{props.title}</h3>
-  <div>
-     <input/>
-     <button>+</button>
-  </div>
-  <div>
-    <ul>
-       <li><input type="checkbox" checked={true}/><span>HTML&CSS</span></li>
-       <li><input type="checkbox" checked={true}/><span>JavaScript</span></li>
-       <li><input type="checkbox" checked={false}/><span>React</span></li>
-    </ul>
-  </div>
-  <div>
-     <button>All</button>
-     <button>Active</button>
-     <button>Comleted</button>
-  </div>
-  </div>
+In the project directory, you can run:
 
+### `npm start`
 
-let tasks1 = [
-{id: 1, title: 'HTML&CSS', isDone: true},
-{id: 1, title: 'JavaScript', isDone: true},
-{id: 1, title: 'React', isDone: false},
-{id: 1, title: 'TypeScript', isDone: false},
-{id: 1, title: 'Angular', isDone: false},
-]
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-let tasks2 = [
-{id: 1, title: 'Terminator', isDone: true},
-{id: 1, title: 'XXX', isDone: false},
-{id: 1, title: 'John Weak', isDone: false},
-]
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-Вопросы(компонента,props, debbuger )
+### `npm test`
 
-//***********************************************************//
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-Lesson#2
+### `npm run build`
 
-- "map"
-- удаление задач
-- функция для удаления задачи
-- фильтрация массива с task'ами
-- Local State (useState)
-- фильтрация задач (all | active | completed)
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-//***********************************************************//
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-Lesson#3
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-- uuid :  yarn add uuid @types/uuid
-- про key
-- addTask
-- чтение значения из input
-- очистка поля input (onChange)
-- добавление task при нажатии на enter (onKeyPress)
-- рефакторинг кода
-- рефакторинг функции удаления
+### `npm run eject`
 
-//***********************************************************//
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-Lesson#4
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-- начало. активный чекбокс
-- trim()
-- title is required
-- подсветка кнопок
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-//***********************************************************//
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-Lesson#5
+## Learn More
 
-- массив Todolists
-- фильтрация тасок для каждого todolist
-- где хранить таски
-- debugger
-- удаление todolists
-- удаление todolist tasks из стейта
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-//***********************************************************//
-
-Lesson#6
-
-– пере использование input
-– обертка addTask
-– добавляем новый todolist
-– типизация tasksObj
-– редактирование span
-– EditableSpan
-– редактирование todolist name
-– debugger (как работает editable span)
-– резюме (рисовалка)
-
-//***********************************************************//
-
-Lesson#7
-
-- кнопки
-- инпут
-- чекбокс
-- AppBar
-- Container, grid
-
-//***********************************************************//
-
-Lesson#8
-
-– как работает reducer –
-– начало. игрушечные тесты
-– тесты для reducer
-– иммутабельность для редьюсера
-– TDD (test-driven development)
-– reducers for todolists
-– тесты для todolist reducers
-– типизация actions
-– action creators
-– debugger
-
-//***********************************************************//
-
-Lesson#9
-
-- tasks reducer
-  – тесты
-  – white board
-
-//***********************************************************//
-
-Lesson#10 - Todolist for student (useReducer, redux)
-
-- Reducers - React
-- Redux
-- createStore
-- combineReducers
-- AppRootStateType
-- Provider from react-redux
-- return state default
-- initialState
-- useDispatch react-redux
-- useSelector react-redux
-
-- задание for Advanced Level
-
-установка Redux
--yarn add redux react-redux @types/react-redux
-
-//***********************************************************//
-
-Lesson#11
-
-//***********************************************************//
-
-Lesson#12
-
-//***********************************************************//
+To learn React, check out the [React documentation](https://reactjs.org/).
