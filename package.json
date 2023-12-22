@@ -11,6 +11,7 @@
     "@types/react": "^18.0.23",
     "@types/react-dom": "^18.0.7",
     "@types/uuid": "^9.0.7",
+    "axios": "^1.6.2",
     "clsx": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -27,7 +28,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "storybook dev -p 9009",
     "build-storybook": "storybook build"
   },
   "eslintConfig": {
@@ -50,6 +51,7 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-a11y": "^7.6.6",
     "@storybook/addon-essentials": "7.6.6",
     "@storybook/addon-interactions": "7.6.6",
     "@storybook/addon-links": "7.6.6",
