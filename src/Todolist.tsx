@@ -5,7 +5,7 @@ import {AddItemForm} from "./components/AddItemForm/AddItemForm";
 import {EditableSpan} from "./components/EditableSpan/EditableSpan";
 import {PlusSquareOutline} from "./assets";
 import Trash from "./assets/trash";
-import {Task} from "./components/Task";
+import {Task} from "./components/Task/Task";
 
 export type TaskType = {
     id: string

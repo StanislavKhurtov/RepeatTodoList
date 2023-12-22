@@ -1,8 +1,8 @@
 import clsx from "clsx";
-import {EditableSpan} from "../components/EditableSpan/EditableSpan";
-import Trash from "../assets/trash";
+import {EditableSpan} from "../EditableSpan/EditableSpan";
+import Trash from "../../assets/trash";
 import React from "react";
-import {TaskType} from "../Todolist";
+import {TaskType} from "../../Todolist";
 
 type TaskProps = {
     todolistId: string
