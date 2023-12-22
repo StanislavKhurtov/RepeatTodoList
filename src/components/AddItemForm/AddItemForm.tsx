@@ -8,7 +8,7 @@ type Props = {
 }
 
 
-export const AddItemForm = (props:Props) => {
+export const AddItemForm = React.memo((props:Props) => {
     const [newTitle, setNewTitle] = useState<string>('')
     const [error, setError] = useState<string | null>(null)
 
@@ -16,7 +16,9 @@ export const AddItemForm = (props:Props) => {
         setNewTitle(e.currentTarget.value)
     }
     const onKeypressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        setError(null)
+        if(error !== null) {
+            setError(null)
+        }
         if (e.key === 'Enter') {
             addItem()
         }
@@ -41,4 +43,4 @@ export const AddItemForm = (props:Props) => {
         {error && <div className={'error-message'}>{error}</div>}
 
     </div>
-}
+})
