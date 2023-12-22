@@ -54,7 +54,7 @@ export const Todolist = React.memo((props: Props) => {
         <div className="todo__body">
             <h3 className='todo__title title'>
                 <EditableSpan title={props.title} onChange={changeTodolistTitle}/>
-                <button className={'todo__btnDelete'} onClick={removeTodolist}>{<Trash className={'icon'}/>}</button>
+                <button className={'todo__btnDelete'} onClick={removeTodolist}>{<Trash className={'iconDelete'}/>}</button>
             </h3>
             <AddItemForm addItem={addTask} trigger={<PlusSquareOutline className={'icon'}/>}/>
             <div className='todo__items'>

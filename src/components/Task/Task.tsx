@@ -27,6 +27,6 @@ export const Task = React.memo((props: TaskProps) => {
                 props.changeTaskStatus(props.todolistId, props.task.id, e.currentTarget.checked)
             }}/>
         <EditableSpan title={props.task.title} onChange={changeTaskTitle}/>
-        <button className={'item__btn'} onClick={onClickHandler}>{<Trash className={'icon'}/>}</button>
+        <button className={'item__btn'} onClick={onClickHandler}>{<Trash className={'iconDelete'}/>}</button>
     </div>
 })
