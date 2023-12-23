@@ -47,20 +47,20 @@ export type TodolistType = {
     addedDate: string
     order: number
 }
-type ResponseType<D = {}> = {
+export type ResponseType<D = {}> = {
     resultCode: number
     messages: Array<string>
     fieldsErrors: Array<string>
     data: D
 }
 
-type GetTaskResponse = {
+export type GetTaskResponse = {
     error: string
     totalCount: number
     items: TaskType[]
 }
 
-type TaskType = {
+export type TaskType = {
     description: string
     title: string
     completed: boolean
@@ -72,6 +72,16 @@ type TaskType = {
     todoListId: string
     order: number
     addedDate: string
+}
+
+export type UpdateTaskTYpe = {
+    title: string
+    description: string
+    completed:boolean
+    status: number
+    priority: number
+    startDate: string
+    deadline: string
 }
 
 
