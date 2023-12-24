@@ -61,7 +61,6 @@ export const App = () => {
             <Header/>
             <div className="home__container">
                 <AddItemForm
-                    type={'date'}
                     addItem={addTodolist}
                     label={'New Todolist'}
                     trigger={<PlusSquareOutline className={'icon'}/>}

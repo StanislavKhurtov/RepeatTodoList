@@ -8,7 +8,6 @@ const instance = axios.create({
     },
 })
 
-
 export const todolistAPI = {
     getTodolist() {
         return instance.get<TodolistType[]>(`todo-lists`)
@@ -29,10 +28,10 @@ export const taskAPI = {
         return instance.get<GetTaskResponse>(`todo-lists/${todolistId}/tasks`)
     },
     createTask(todolistId: string, title: string) {
-        return instance.post<ResponseType<{item: TaskType}>>(`/todo-lists/${todolistId}/tasks`, {title})
+        return instance.post<ResponseType<TaskType>>(`/todo-lists/${todolistId}/tasks`, {title})
     },
-    updateTask(todolistId: string,taskId:string, title: string) {
-        return instance.put<ResponseType<{item: TaskType}>>(`todo-lists/${todolistId}/tasks/${taskId}`, {title})
+    updateTask(todolistId: string,taskId:string, model: UpdateTaskModelType) {
+        return instance.put<ResponseType<{item: TaskType}>>(`todo-lists/${todolistId}/tasks/${taskId}`, model)
     },
     deleteTask(todolistId: string,taskId:string) {
         return instance.delete<ResponseType>(`todo-lists/${todolistId}/tasks/${taskId}`)
@@ -74,10 +73,9 @@ export type TaskType = {
     addedDate: string
 }
 
-export type UpdateTaskTYpe = {
+export type UpdateTaskModelType = {
     title: string
     description: string
-    completed:boolean
     status: number
     priority: number
     startDate: string
