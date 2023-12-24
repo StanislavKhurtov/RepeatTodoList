@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import {taskAPI, todolistAPI} from "../api/todolist-api";
-import {setPriority} from "node:os";
 
 export default {
     title: 'API'
