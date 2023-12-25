@@ -12,9 +12,10 @@ import {
     removeTodolistTC,
     TodolistDomainType,
 } from "../state/todolists-reducer";
-import {addTaskTC, changeTaskTitleAC, removeTaskTC, updateTaskStatusTC} from "../state/task-reducer";
+import {addTaskTC, removeTaskTC, updateTaskTC} from "../state/task-reducer";
 import {TaskStatuses, TaskType} from "../api/todolist-api";
 import {useAppDispatch, useAppSelector} from "../state/store";
+import {Linear} from "../components/linear";
 
 export type TasksStateType = {
     [key: string]: TaskType[]
@@ -36,10 +37,10 @@ export const App = () => {
         dispatch(addTaskTC(todolistId, title))
     }, [dispatch])
     const changeTaskStatus = useCallback((todolistId: string, taskId: string, status: TaskStatuses) => {
-        dispatch(updateTaskStatusTC(todolistId, taskId, status))
+        dispatch(updateTaskTC(todolistId, taskId, {status}))
     }, [dispatch])
     const changeTaskTitle = useCallback((todolistId: string, taskId: string, title: string) => {
-        dispatch(changeTaskTitleAC(todolistId, taskId, title))
+        dispatch(updateTaskTC(todolistId, taskId, {title}))
     }, [dispatch])
 
 //todo
@@ -59,6 +60,7 @@ export const App = () => {
     return (
         <div className="App">
             <Header/>
+            <Linear />
             <div className="home__container">
                 <AddItemForm
                     addItem={addTodolist}
