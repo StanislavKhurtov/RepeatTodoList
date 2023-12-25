@@ -1,6 +1,6 @@
 import type { Meta, Story } from '@storybook/react'
 
-import { Linear } from '@/components/ui/linear/linear'
+import { Linear } from './linear'
 
 const meta: Meta = {
   argTypes: {},

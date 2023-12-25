@@ -16,6 +16,8 @@ import {addTaskTC, removeTaskTC, updateTaskTC} from "../state/task-reducer";
 import {TaskStatuses, TaskType} from "../api/todolist-api";
 import {useAppDispatch, useAppSelector} from "../state/store";
 import {Linear} from "../components/linear";
+import {RequestStatusType} from "../app/app-reducer";
+
 
 export type TasksStateType = {
     [key: string]: TaskType[]
@@ -23,6 +25,7 @@ export type TasksStateType = {
 export const App = () => {
     const todolists = useAppSelector<TodolistDomainType[]>(state => state.todolists)
     const tasks = useAppSelector<TasksStateType>(state => state.tasks)
+    const status = useAppSelector<RequestStatusType>(state=> state.app.status)
     const dispatch = useAppDispatch()
 
     useEffect(() => {
@@ -60,7 +63,7 @@ export const App = () => {
     return (
         <div className="App">
             <Header/>
-            <Linear />
+            {status === 'loading' && <Linear className="preloader"/>}
             <div className="home__container">
                 <AddItemForm
                     addItem={addTodolist}
