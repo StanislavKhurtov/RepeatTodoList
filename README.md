@@ -1,46 +1,162 @@
-# Getting Started with Create React App
+Todolist for student
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+//==========================================================//
 
-## Available Scripts
+lesson#01 - Todolist for students
 
-In the project directory, you can run:
 
-### `npm start`
+//==========================================================//
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+ lesson#02 - Todolist for students
+ - метод "map"
+ - удаление задач
+ - функция для удаления задачи
+ - фильтрация массива с task'ами
+ - Local State (useState)
+ - фильтрация задач (all | active | completed)
+ - ИТОГ
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+//==========================================================//
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+lesson#03 - Todolist for students
+ - uuid
+ - про key
+ - addTask
+ - чтение значения из input
+ - очистка поля input (onChange)
+ - добавление task при нажатии на enter (onKeyPress)
+ - рефактор кода
+ - рефактор функции удаления
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+/==========================================================//
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+lesson#04 - Todolist for students
+ - начало. активный чекбокс
+ - trim()
+ - title is required
+ - подсветка кнопок
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+//==========================================================//
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+ lesson#06 - Todolist for students
+ -  переиспользование input
+ -  обертка addTask
+ -  добавляем новый todolist
+ -  типизация tasksObj
+ -  редактирование span
+ -  EditableSpan
+ -  редактирование todolist name
+ -  debugger (как работает editable span)
+ -  резюме (рисовалка)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+//==========================================================//
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+lesson#07 - Todolist for students (material-ui)
+ - кнопки
+ - инпут
+ - чекбокс
+ - AppBar
+ - Container, grid
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+//==========================================================//
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+lesson#08 - Todolist for student (reducer, unit test)
+
+- как работает reducer –
+ - начало. игрушечные тесты
+ - тесты для reducer
+ - иммутабельность для редьюсера
+ - TDD (test-driven development)
+ - reducers for todolists
+ - тесты для todolist reducers
+ - типизация actions
+ - action creators
+ - debugger
+
+//==========================================================//
+
+lesson#09 - Todolist for student 09 (reducer for tasks, unit test)
+ - начало
+ - тесты
+ - white board
+
+//==========================================================//
+
+lesson#10 - useReducer, redux
+
+ Reducers - React
+- Redux
+- createStore
+- combineReducers
+- AppRootStateType
+- Provider from react-redux
+- return state default
+- initialState
+- useDispatch react-redux
+- useSelector react-redux
+- задание for Advanced Level  
+
+//==========================================================//
+
+lesson#11 - Todolist for student (useCallback, React.memo, immutability)
+ - почему происходит глюк с перерисовкой
+ - избавление от лишних просчетов при перерисовке V-dom
+ - RectMemo
+ - почему перерисовка компоненты App перерисовывает другие компоненты
+ - избавляемся от лишней перерисовки колбэка с помощью useCallback
+ - простая концепция про useCallback и React.memo
+ - про иммутабильность
+ - второй параметр в useCallback зависимости 
+
+//==========================================================//
+
+lesson12 - Todolist for student (storybook, decorator, snapshot testing)
+ - начало
+ - история для Task
+ - декоратор
+ - addons
+ - snapshot testing теория
+ - snapshot testing практика
+
+//==========================================================//
+
+lesson13 - 01 - Todolist for student (api, axios, rest api)
+ - введение
+ - теория (Rest API)
+ - разбираем API todolists
+ - подготовка для запроса тасок
+ - про статус коды, Postman, JSON
+ - создаем историю с запросами
+ - get запрос todolists
+ - post запрос
+ - delete todolist
+ - update todolist
+ - рефакторинг
+ - типизация
+ - tasks API
+
+//==========================================================//
+
+lesson1313 - 02 - Todolist for student 13 (part 2) (api, axios, rest api)
+
+//==========================================================//
+
+lesson13 - 03 - Todolist for student (миграция на новые типы (подготовка к 14 занятию))
+37:40 – Provider decorator
+45:30 – tests
+
+//==========================================================//
+
+
+
+
+//==========================================================//
+
+lesson 15 - 01 - Todolist for student (Progressbar and error handling (part 1))
+
+

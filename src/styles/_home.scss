@@ -1,11 +1,13 @@
 //todo
 
 .todo {
-  flex: 1 0 25%;
+  flex: 1 0 20%;
   border: 1px solid #FFFFFF;
   padding: 10px;
   border-radius: 5px;
   word-break: break-word;
+  flex-wrap: wrap;
+
 }
 
 .todo__body {
@@ -49,13 +51,14 @@
 .todo__buttons-block {
   display: flex;
   gap: 20px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .todo__btn {
   padding: 6px 12px;
   border: 1px solid #FFFFFF;
   border-radius: 5px;
+  white-space: nowrap;
 }
 
 .item__btn {

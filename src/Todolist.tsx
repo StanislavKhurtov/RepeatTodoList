@@ -56,7 +56,7 @@ export const Todolist = React.memo((props: Props) => {
             </h3>
             <AddItemForm addItem={addTask} trigger={<PlusSquareOutline className={'icon'}/>}/>
             <div className='todo__items'>
-                {taskForTodolist.map(task => <Task
+                {taskForTodolist?.map(task => <Task
                     todolistId={props.id}
                     key={task.id}
                     task={task}

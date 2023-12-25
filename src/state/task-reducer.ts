@@ -1,4 +1,4 @@
-import {TasksStateType} from "../App";
+import {TasksStateType} from "../app/App";
 import {v1} from "uuid";
 import {AddTodolistType, RemoveTodolistType, SetTodolistsType} from "./todolists-reducer";
 import {TaskPriorities, TaskStatuses} from "../api/todolist-api";
@@ -71,18 +71,11 @@ export const tasksReducer = (state = initialState, action: ActionType): TasksSta
 }
 
 
-export const removeTaskAC = (todolistId: string, taskId: string): RemoveTaskType => {
-    return {type: 'REMOVE-TASK', todolistId, taskId}
-}
-export const addTaskAC = (todolistId: string, title: string): AddTaskType => {
-    return {type: 'ADD-TASK', todolistId, title}
-}
-export const changeTaskStatusAC = (todolistId: string, taskId: string, status: TaskStatuses): ChangeTaskStatusType => {
-    return {type: 'CHANGE-TASK-STATUS', todolistId, taskId, status}
-}
-export const changeTaskTitleAC = (todolistId: string, taskId: string, title: string): ChangeTaskTitleType => {
-    return {type: 'CHANGE-TASK-TITLE', todolistId, taskId, title}
-}
+export const removeTaskAC = (todolistId: string, taskId: string)=> ({type: 'REMOVE-TASK' as const, todolistId, taskId})
+export const addTaskAC = (todolistId: string, title: string)=> ({type: 'ADD-TASK'  as const, todolistId, title})
+export const changeTaskStatusAC = (todolistId: string, taskId: string, status: TaskStatuses) => ({type: 'CHANGE-TASK-STATUS'  as const, todolistId, taskId, status})
+export const changeTaskTitleAC = (todolistId: string, taskId: string, title: string) => ({type: 'CHANGE-TASK-TITLE' as const, todolistId, taskId, title})
+
 
 //type
 
@@ -94,26 +87,8 @@ type ActionType = RemoveTaskType
     | RemoveTodolistType
     | SetTodolistsType
 
-type RemoveTaskType = {
-    type: 'REMOVE-TASK'
-    todolistId: string
-    taskId: string
-}
-type AddTaskType = {
-    type: 'ADD-TASK'
-    todolistId: string
-    title: string
-}
-type ChangeTaskStatusType = {
-    type: 'CHANGE-TASK-STATUS'
-    todolistId: string
-    taskId: string
-    status: TaskStatuses
-}
-type ChangeTaskTitleType = {
-    type: 'CHANGE-TASK-TITLE'
-    todolistId: string
-    taskId: string
-    title: string
-}
+type RemoveTaskType = ReturnType<typeof removeTaskAC>
+type AddTaskType = ReturnType<typeof addTaskAC>
+type ChangeTaskStatusType =  ReturnType<typeof changeTaskStatusAC>
+type ChangeTaskTitleType =  ReturnType<typeof changeTaskTitleAC>
 
