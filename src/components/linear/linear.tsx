@@ -1,12 +1,12 @@
 type Props = {
-  className?: string
+    className?: string
 }
-export const Linear = ({ className }: Props) => {
-  return (
-      <div className={`${className}`}>
-          <div className={'loader'}>
-              <div className={'loaderGradient'}></div>
-          </div>
-      </div>
-  )
+export const Linear = ({className}: Props) => {
+    return (
+        <div className={`${className}`}>
+            <div className={'loader'}>
+                <div className={'loaderGradient'}></div>
+            </div>
+        </div>
+    )
 }
