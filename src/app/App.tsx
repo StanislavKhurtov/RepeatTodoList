@@ -104,6 +104,7 @@ export const App = () => {
               changeTaskStatus={changeTaskStatus}
               changeTaskTitle={changeTaskTitle}
               changeTodolistTitle={changeTodolistTitle}
+              entityStatus={todolist.entityStatus}
               filter={todolist.filter}
               id={todolist.id}
               key={todolist.id}

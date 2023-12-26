@@ -4,6 +4,7 @@ import clsx from 'clsx'
 
 type Props = {
   addItem: (title: string) => void
+  disabled?: boolean
   label?: string
   trigger?: ReactNode
 } & InputHTMLAttributes<HTMLInputElement>
@@ -38,11 +39,12 @@ export const AddItemForm = React.memo((props: Props) => {
       <input
         {...props}
         className={clsx('AddItemForm__input', { error: error })}
+        disabled={props.disabled}
         onChange={onChangeHandler}
         onKeyPress={onKeypressHandler}
         value={newTitle}
       />
-      <button className={'AddItemForm__btn'} onClick={addItem}>
+      <button className={'AddItemForm__btn'} disabled={props.disabled} onClick={addItem}>
         {props.trigger}
       </button>
       {error && <div className={'error-message'}>{error}</div>}

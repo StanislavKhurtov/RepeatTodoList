@@ -95,8 +95,10 @@ export const fetchTasks = (todolistId: string) => (dispatch: Dispatch<TaskAction
 }
 export const removeTaskTC =
   (todolistId: string, taskId: string) => (dispatch: Dispatch<TaskActionType>) => {
+    dispatch(setStatus('loading'))
     taskAPI.deleteTask(todolistId, taskId).then(() => {
       dispatch(removeTaskAC(todolistId, taskId))
+      dispatch(setStatus('succeeded'))
     })
   }
 export const addTaskTC =

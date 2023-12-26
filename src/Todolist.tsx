@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect } from 'react'
 
+import { RequestStatusType } from '@/app/app-reducer'
 import { AddItemForm } from '@/components/AddItemForm'
 import { EditableSpan } from '@/components/EditableSpan'
 import clsx from 'clsx'
@@ -18,6 +19,7 @@ type Props = {
   changeTaskStatus: (todolistId: string, taskId: string, status: TaskStatuses) => void
   changeTaskTitle: (todolistId: string, taskId: string, title: string) => void
   changeTodolistTitle: (todolistId: string, title: string) => void
+  entityStatus: RequestStatusType
   filter: FilterPropsType
   id: string
   removeTask: (todolistId: string, taskId: string) => void
@@ -75,11 +77,23 @@ export const Todolist = React.memo((props: Props) => {
       <div className={'todo__body'}>
         <h3 className={'todo__title title'}>
           <EditableSpan onChange={changeTodolistTitle} title={props.title} />
-          <button className={'todo__removeButton'} onClick={removeTodolist}>
-            {<Trash className={'iconDelete'} />}
+          <button
+            className={'todo__removeButton'}
+            disabled={props.entityStatus === 'loading'}
+            onClick={removeTodolist}
+          >
+            {
+              <Trash
+                className={`iconDelete ${props.entityStatus === 'loading' ? 'disabled' : ''}`}
+              />
+            }
           </button>
         </h3>
-        <AddItemForm addItem={addTask} trigger={<PlusSquareOutline className={'icon'} />} />
+        <AddItemForm
+          addItem={addTask}
+          disabled={props.entityStatus === 'loading'}
+          trigger={<PlusSquareOutline className={'icon'} />}
+        />
         <div className={'todo__items'}>
           {taskForTodolist?.map(task => (
             <Task

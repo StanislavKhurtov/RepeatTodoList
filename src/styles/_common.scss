@@ -30,7 +30,8 @@
   width: 32px;
   height: 32px;
   color: aqua;
-transition: color 0.4s;
+  transition: color 0.4s;
+
   &:hover {
     color: darkmagenta;
   }
@@ -44,9 +45,15 @@ transition: color 0.4s;
   justify-content: center;
   color: aqua;
   transition: color 0.4s;
+
   &:hover {
-    color: darkmagenta;
+    color: darkgray;
   }
 }
+
+.disabled {
+  opacity: 0.2;
+}
+
 
 
