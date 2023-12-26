@@ -36,7 +36,7 @@ export const Todolist = React.memo((props: Props) => {
     (title: string) => {
       props.addTask(props.id, title)
     },
-    [props.addTask, props.id]
+    [props]
   )
   const removeTodolist = () => {
     props.removeTodolist(props.id)
@@ -75,7 +75,7 @@ export const Todolist = React.memo((props: Props) => {
       <div className={'todo__body'}>
         <h3 className={'todo__title title'}>
           <EditableSpan onChange={changeTodolistTitle} title={props.title} />
-          <button className={'todo__btnDelete'} onClick={removeTodolist}>
+          <button className={'todo__removeButton'} onClick={removeTodolist}>
             {<Trash className={'iconDelete'} />}
           </button>
         </h3>

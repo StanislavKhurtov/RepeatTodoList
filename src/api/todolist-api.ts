@@ -114,11 +114,15 @@ export enum TaskStatuses {
   InProgress = 1,
   New = 0,
 }
-
 export enum TaskPriorities {
   Hi = 2,
   Later = 4,
   Low = 0,
   Middle = 1,
   Urgently = 3,
+}
+export enum RESULT_CODE {
+  FAILED = 1,
+  RECAPTCHA_FAILED = 2,
+  SUCCEEDED = 0,
 }

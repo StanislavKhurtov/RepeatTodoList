@@ -4,6 +4,7 @@ import { Todolist } from '@/Todolist'
 import { TaskStatuses, TaskType } from '@/api/todolist-api'
 import { RequestStatusType } from '@/app/app-reducer'
 import { AddItemForm } from '@/components/AddItemForm'
+import { ErrorSnackbar } from '@/components/ErrorSnackbar/ErrorSnackbar'
 import { Header } from '@/components/Header'
 import { Linear } from '@/components/linear'
 import { useAppDispatch, useAppSelector } from '@/state/store'
@@ -31,7 +32,7 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(fetchTodolist)
-  }, [])
+  }, [dispatch])
 
   //task
   const removeTask = useCallback(
@@ -84,6 +85,7 @@ export const App = () => {
 
   return (
     <div className={'App'}>
+      <ErrorSnackbar />
       <Header />
       {status === 'loading' && <Linear className={'preloader'} />}
       <div className={'home__container'}>
