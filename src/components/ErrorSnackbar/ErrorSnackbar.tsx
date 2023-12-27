@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { setError } from '@/app/app-reducer'
-import { useAppDispatch, useAppSelector } from '@/state/store'
+import { useAppDispatch, useAppSelector } from '@/app/store'
 import MuiAlert, { AlertProps } from '@mui/material/Alert'
 import Snackbar from '@mui/material/Snackbar'
 
