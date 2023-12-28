@@ -1,5 +1,9 @@
 import { AuthParamsType, RESULT_CODE, authAPI } from '@/api/todolist-api'
 import { SetErrorType, SetStatusType, setStatus } from '@/app/app-reducer'
+import {
+  ClearStateDataAC,
+  ClearStateDataType,
+} from '@/features/TodolistList/Todolist/todolists-reducer'
 import { handleServerAppError, handleServerNetworkError } from '@/utils/error-utils'
 import { Dispatch } from 'redux'
 
@@ -51,6 +55,7 @@ export const logOutTC = () => (dispatch: Dispatch<ActionsType>) => {
       if (res.data.resultCode === RESULT_CODE.SUCCEEDED) {
         dispatch(setIsLoggedInAC(false))
         dispatch(setStatus('succeeded'))
+        dispatch(ClearStateDataAC())
       } else {
         handleServerAppError(res.data, dispatch)
       }
@@ -61,5 +66,5 @@ export const logOutTC = () => (dispatch: Dispatch<ActionsType>) => {
 }
 
 // types
-type ActionsType = SetErrorType | SetIsLoginIn | SetStatusType
+type ActionsType = ClearStateDataType | SetErrorType | SetIsLoginIn | SetStatusType
 export type SetIsLoginIn = ReturnType<typeof setIsLoggedInAC>

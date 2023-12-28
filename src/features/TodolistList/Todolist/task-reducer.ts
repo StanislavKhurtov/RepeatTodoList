@@ -11,6 +11,7 @@ import { SetErrorType, SetStatusType, setStatus } from '@/app/app-reducer'
 import { AppRootStateType } from '@/app/store'
 import {
   AddTodolistType,
+  ClearStateDataType,
   RemoveTodolistType,
   SetTodolistsType,
 } from '@/features/TodolistList/Todolist/todolists-reducer'
@@ -69,6 +70,9 @@ export const tasksReducer = (state = initialState, action: TaskActionType): Task
           el.id === action.taskId ? { ...el, ...action.model } : el
         ),
       }
+    }
+    case 'CLEAR-STATE-DATA': {
+      return {}
     }
     default:
       return state
@@ -178,6 +182,7 @@ export const updateTaskTC =
 
 type TaskActionType =
   | AddTodolistType
+  | ClearStateDataType
   | RemoveTodolistType
   | ReturnType<typeof addTaskAC>
   | ReturnType<typeof removeTaskAC>
