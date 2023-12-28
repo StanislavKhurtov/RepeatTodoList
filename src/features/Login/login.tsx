@@ -18,7 +18,7 @@ type FormikErrorType = {
   rememberMe?: boolean
 }
 export const Login = () => {
-  const isLoggidin = useAppSelector<boolean>(state => state.auth.isLoggedIn)
+  const isLoggidIn = useAppSelector<boolean>(state => state.auth.isLoggedIn)
   const dispatch = useAppDispatch()
 
   const formik = useFormik({
@@ -48,7 +48,7 @@ export const Login = () => {
     },
   })
 
-  if (isLoggidin) {
+  if (isLoggidIn) {
     return <Navigate to={'/'} />
   }
 
