@@ -1,4 +1,4 @@
-import { TodolistType, todolistAPI } from '@/api/todolist-api'
+import { RESULT_CODE, TodolistType, todolistAPI } from '@/api/todolist-api'
 import {
   RequestStatusType,
   SetErrorType,
@@ -6,6 +6,7 @@ import {
   setError,
   setStatus,
 } from '@/app/app-reducer'
+import { handleServerAppError } from '@/utils/error-utils'
 import { Dispatch } from 'redux'
 
 const initialState: TodolistDomainType[] = []
@@ -66,8 +67,12 @@ export const removeTodolistTC = (todolistId: string) => (dispatch: Dispatch<Todo
 export const addTodolistTC = (title: string) => (dispatch: Dispatch<TodoActionType>) => {
   dispatch(setStatus('loading'))
   todolistAPI.createTodolist(title).then(res => {
-    dispatch(addTodolistAC(res.data.data.item))
-    dispatch(setStatus('succeeded'))
+    if (res.data.resultCode === RESULT_CODE.SUCCEEDED) {
+      dispatch(addTodolistAC(res.data.data.item))
+      dispatch(setStatus('succeeded'))
+    } else {
+      handleServerAppError(res.data, dispatch)
+    }
   })
 }
 

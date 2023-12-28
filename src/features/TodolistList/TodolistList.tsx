@@ -1,11 +1,12 @@
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
+import { Navigate } from 'react-router-dom'
 
-import { Todolist } from '@/features/TodolistList/Todolist/Todolist'
 import { TaskStatuses } from '@/api/todolist-api'
 import { TasksStateType } from '@/app/App'
 import { useAppDispatch, useAppSelector } from '@/app/store'
 import { PlusSquareOutline } from '@/assets'
 import { AddItemForm } from '@/components/AddItemForm'
+import { Todolist } from '@/features/TodolistList/Todolist/Todolist'
 import {
   addTaskTC,
   removeTaskTC,
@@ -17,13 +18,22 @@ import {
   addTodolistTC,
   changeTodolistFilterAC,
   changeTodolistTitleTC,
+  fetchTodolist,
   removeTodolistTC,
 } from '@/features/TodolistList/Todolist/todolists-reducer'
 
 export const TodolistList = () => {
   const todolists = useAppSelector<TodolistDomainType[]>(state => state.todolists)
   const tasks = useAppSelector<TasksStateType>(state => state.tasks)
+  const isLoggedIn = useAppSelector<boolean>(state => state.auth.isLoggedIn)
   const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      return
+    }
+    dispatch(fetchTodolist)
+  }, [])
 
   //task
   const removeTask = useCallback(
@@ -73,6 +83,10 @@ export const TodolistList = () => {
     },
     [dispatch]
   )
+
+  if (!isLoggedIn) {
+    return <Navigate to={'/login'} />
+  }
 
   return (
     <div className={'home__container'}>

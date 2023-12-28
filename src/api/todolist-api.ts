@@ -62,6 +62,18 @@ export const taskAPI = {
   },
 }
 
+export const authAPI = {
+  login(data: AuthParamsType) {
+    return instance.post<ResponseType<{ userId?: number }>>('auth/login', data)
+  },
+  logout() {
+    return instance.delete<ResponseType>('auth/login')
+  },
+  me() {
+    return instance.get<ResponseType<{ email: string; id: number; login: string }>>('auth/me')
+  },
+}
+
 //types
 
 export type TodolistType = {
@@ -106,6 +118,13 @@ export type UpdateTaskModelType = {
   title: string
 }
 
+export type AuthParamsType = {
+  captcha?: string
+  email: string
+  password: string
+  rememberMe: boolean
+}
+
 //enum
 
 export enum TaskStatuses {
@@ -114,6 +133,7 @@ export enum TaskStatuses {
   InProgress = 1,
   New = 0,
 }
+
 export enum TaskPriorities {
   Hi = 2,
   Later = 4,
@@ -121,6 +141,7 @@ export enum TaskPriorities {
   Middle = 1,
   Urgently = 3,
 }
+
 export enum RESULT_CODE {
   FAILED = 1,
   RECAPTCHA_FAILED = 2,
