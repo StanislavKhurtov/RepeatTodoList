@@ -40,7 +40,7 @@ export const todolistReducer = (
       return state
   }
 }
-//thunk
+//thunks
 export const fetchTodolist = async (dispatch: Dispatch<TodoActionType>) => {
   setStatus('loading')
   const res = await todolistAPI.getTodolist()
@@ -105,14 +105,13 @@ export const changeTodolistFilterAC = (todolistId: string, filter: FilterPropsTy
   todolistId,
   type: 'CHANGE-TODOLIST-FILTER' as const,
 })
-
 export const setEntityStatusAC = (todolistId: string, entityStatus: RequestStatusType) => ({
   entityStatus,
   todolistId,
   type: 'SET-ENTITY-STATUS' as const,
 })
 
-//type
+//types
 
 export type FilterPropsType = 'active' | 'all' | 'completed'
 

@@ -75,7 +75,7 @@ export const tasksReducer = (state = initialState, action: TaskActionType): Task
   }
 }
 
-// action creator
+// actions
 export const setTasksAC = (todolistId: string, tasks: Array<TaskType>) => ({
   tasks,
   todolistId,
@@ -93,7 +93,7 @@ export const updateTaskAC = (
   model: UpdateDomainTaskModelType
 ) => ({ model, taskId, todolistId, type: 'UPDATE-TASK' }) as const
 
-// thunk creator
+// thunks
 export const fetchTasks = (todolistId: string) => (dispatch: Dispatch<TaskActionType>) => {
   dispatch(setStatus('loading'))
   taskAPI.getTask(todolistId).then(res => {
@@ -117,14 +117,19 @@ export const removeTaskTC =
 export const addTaskTC =
   (todolistId: string, title: string) => (dispatch: Dispatch<TaskActionType>) => {
     dispatch(setStatus('loading'))
-    taskAPI.createTask(todolistId, title).then(res => {
-      if (res.data.resultCode === RESULT_CODE.SUCCEEDED) {
-        dispatch(addTaskAC(res.data.data.item))
-        dispatch(setStatus('succeeded'))
-      } else {
-        handleServerAppError(res.data, dispatch)
-      }
-    })
+    taskAPI
+      .createTask(todolistId, title)
+      .then(res => {
+        if (res.data.resultCode === RESULT_CODE.SUCCEEDED) {
+          dispatch(addTaskAC(res.data.data.item))
+          dispatch(setStatus('succeeded'))
+        } else {
+          handleServerAppError(res.data, dispatch)
+        }
+      })
+      .catch((e: AxiosError<ErrorType>) => {
+        handleServerNetworkError(e, dispatch)
+      })
   }
 export const updateTaskTC =
   (todolistId: string, taskId: string, domainModel: UpdateDomainTaskModelType) =>

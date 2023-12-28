@@ -45,7 +45,9 @@ export const loginTC = (data: AuthParamsType) => (dispatch: Dispatch<ActionsType
 
 export const logOutTC = () => (dispatch: Dispatch<ActionsType>) => {
   dispatch(setStatus('loading'))
-  authAPI.logout().then(res => {
+  authAPI
+    .logout()
+    .then(res => {
       if (res.data.resultCode === RESULT_CODE.SUCCEEDED) {
         dispatch(setIsLoggedInAC(false))
         dispatch(setStatus('succeeded'))

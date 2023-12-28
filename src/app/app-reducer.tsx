@@ -30,7 +30,6 @@ export const appReducer = (
 }
 
 //thunk
-
 export const initializedTC = () => async (dispatch: Dispatch<AppActionsType>) => {
   dispatch(setStatus('loading'))
   try {
