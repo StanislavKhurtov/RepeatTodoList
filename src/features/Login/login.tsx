@@ -1,7 +1,8 @@
 import { Navigate } from 'react-router-dom'
 
-import { useAppDispatch, useAppSelector } from '@/app/store'
+import { useAppSelector } from '@/app/store'
 import { loginTC } from '@/features/Login/auth-reducer'
+import { useAppDispatch } from '@/hooks/useAppDispatch'
 import Button from '@mui/material/Button'
 import Checkbox from '@mui/material/Checkbox'
 import FormControl from '@mui/material/FormControl'
