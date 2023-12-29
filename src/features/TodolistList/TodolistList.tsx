@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom'
 
 import { TaskStatuses } from '@/api/todolist-api'
 import { TasksStateType } from '@/app/App'
-import { useAppDispatch, useAppSelector } from '@/app/store'
+import { useAppSelector } from '@/app/store'
 import { PlusSquareOutline } from '@/assets'
 import { AddItemForm } from '@/components/AddItemForm'
 import { Todolist } from '@/features/TodolistList/Todolist/Todolist'
@@ -16,11 +16,12 @@ import {
   FilterPropsType,
   TodolistDomainType,
   addTodolistTC,
-  changeTodolistFilterAC,
   changeTodolistTitleTC,
   fetchTodolist,
   removeTodolistTC,
+  todolistAction,
 } from '@/features/TodolistList/Todolist/todolists-reducer'
+import { useAppDispatch } from '@/hooks/useAppDispatch'
 
 export const TodolistList = () => {
   const todolists = useAppSelector<TodolistDomainType[]>(state => state.todolists)
@@ -43,8 +44,8 @@ export const TodolistList = () => {
     [dispatch]
   )
   const addTask = useCallback(
-    (todolistId: string, title: string) => {
-      dispatch(addTaskTC(todolistId, title))
+    (id: string, title: string) => {
+      dispatch(addTaskTC(id, title))
     },
     [dispatch]
   )
@@ -63,8 +64,8 @@ export const TodolistList = () => {
 
   //todo
   const changeFilter = useCallback(
-    (todolistId: string, filter: FilterPropsType) => {
-      dispatch(changeTodolistFilterAC(todolistId, filter))
+    (id: string, filter: FilterPropsType) => {
+      dispatch(todolistAction.changeTodolistFilter({ filter, id }))
     },
     [dispatch]
   )
@@ -78,8 +79,8 @@ export const TodolistList = () => {
     dispatch(removeTodolistTC(id))
   }, [])
   const changeTodolistTitle = useCallback(
-    (todolistId: string, title: string) => {
-      dispatch(changeTodolistTitleTC(todolistId, title))
+    (id: string, title: string) => {
+      dispatch(changeTodolistTitleTC(id, title))
     },
     [dispatch]
   )
