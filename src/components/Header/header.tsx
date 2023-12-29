@@ -16,7 +16,7 @@ export const Header = () => {
     <>
       <div className={'header'}>
         <div className={'header__container'}>
-          <div className={'header__logo'}>Trello</div>
+          <div className={'header__logo'}>TasksAssistant</div>
           {isLoggidIn ? <button className={"header__btn"} onClick={logOut}>Log Out<LogOutIcon className={'header__icon'} /></button> : ''}
         </div>
       </div>
