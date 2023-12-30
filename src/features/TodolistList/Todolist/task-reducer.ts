@@ -11,7 +11,7 @@ import { appAction } from '@/app/app-reducer'
 import { AppRootStateType, AppThunk } from '@/app/store'
 import { todolistAction } from '@/features/TodolistList/Todolist/todolists-reducer'
 import { handleServerAppError, handleServerNetworkError } from '@/utils/error-utils'
-import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios, { AxiosError } from 'axios'
 import { Dispatch } from 'redux'
 
@@ -74,16 +74,16 @@ const slice = createSlice({
 export const tasksAction = slice.actions
 export const tasksReducer = slice.reducer
 
-// thunks
-export const fetchTasks =
-  (todolistId: string): AppThunk =>
-  (dispatch: Dispatch) => {
-    dispatch(appAction.setStatus({ status: 'loading' }))
-    taskAPI.getTask(todolistId).then(res => {
-      dispatch(tasksAction.setTasks({ tasks: res.data.items, todolistId }))
-      dispatch(appAction.setStatus({ status: 'succeeded' }))
-    })
-  }
+const fetchTasks = createAsyncThunk('tasks/fetchTasks', (todolistId: string, thunkAPI) => {
+  const { dispatch } = thunkAPI
+
+  dispatch(appAction.setStatus({ status: 'loading' }))
+  taskAPI.getTask(todolistId).then(res => {
+    dispatch(tasksAction.setTasks({ tasks: res.data.items, todolistId }))
+    dispatch(appAction.setStatus({ status: 'succeeded' }))
+  })
+})
+
 export const removeTaskTC =
   (todolistId: string, taskId: string): AppThunk =>
   (dispatch: Dispatch) => {
@@ -159,9 +159,10 @@ export const updateTaskTC =
     }
   }
 
+export const tasksThunks = { fetchTasks }
 //type
 
-export type UpdateDomainTaskModelType = {
+type UpdateDomainTaskModelType = {
   deadline?: string
   description?: string
   priority?: TaskPriorities

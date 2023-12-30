@@ -1,7 +1,7 @@
 import { RESULT_CODE, TodolistType, todolistAPI } from '@/api/todolist-api'
 import { RequestStatusType, appAction } from '@/app/app-reducer'
 import { AppThunk } from '@/app/store'
-import { fetchTasks } from '@/features/TodolistList/Todolist/task-reducer'
+import { tasksThunks } from '@/features/TodolistList/Todolist/task-reducer'
 import { handleServerAppError } from '@/utils/error-utils'
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { Dispatch } from 'redux'
@@ -70,7 +70,7 @@ export const fetchTodolist = async (dispatch: Dispatch<any>) => {
   dispatch(todolistAction.setTodolist({ todolists: res.data }))
   dispatch(appAction.setStatus({ status: 'succeeded' }))
   res.data.forEach(tl => {
-    dispatch(fetchTasks(tl.id))
+    dispatch(tasksThunks.fetchTasks(tl.id))
   })
 }
 export const removeTodolistTC =
