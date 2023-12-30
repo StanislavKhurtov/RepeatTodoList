@@ -4,10 +4,11 @@ import { LogOutIcon } from '@/assets'
 import { Linear } from '@/components/Preloader'
 import { logOutTC } from '@/features/Login/auth-reducer'
 import { useAppDispatch } from '@/hooks/useAppDispatch'
+import { selectIsLoginIn, selectStatus } from '@/selectors/app.selectors'
 
 export const Header = () => {
-  const status = useAppSelector<RequestStatusType>(state => state.app.status)
-  const isLoggidIn = useAppSelector<boolean>(state => state.auth.isLoggedIn)
+  const status = useAppSelector<RequestStatusType>(selectStatus)
+  const isLoggidIn = useAppSelector<boolean>(selectIsLoginIn)
   const dispatch = useAppDispatch()
   const logOut = () => {
     dispatch(logOutTC())

@@ -22,11 +22,12 @@ import {
   todolistAction,
 } from '@/features/TodolistList/Todolist/todolists-reducer'
 import { useAppDispatch } from '@/hooks/useAppDispatch'
+import { selectIsLoginIn, selectTasks, selectTodolists } from '@/selectors/app.selectors'
 
 export const TodolistList = () => {
-  const todolists = useAppSelector<TodolistDomainType[]>(state => state.todolists)
-  const tasks = useAppSelector<TasksStateType>(state => state.tasks)
-  const isLoggedIn = useAppSelector<boolean>(state => state.auth.isLoggedIn)
+  const todolists = useAppSelector<TodolistDomainType[]>(selectTodolists)
+  const tasks = useAppSelector<TasksStateType>(selectTasks)
+  const isLoggedIn = useAppSelector<boolean>(selectIsLoginIn)
   const dispatch = useAppDispatch()
 
   useEffect(() => {

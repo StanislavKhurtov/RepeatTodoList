@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom'
 import { useAppSelector } from '@/app/store'
 import { loginTC } from '@/features/Login/auth-reducer'
 import { useAppDispatch } from '@/hooks/useAppDispatch'
+import { selectIsLoginIn } from '@/selectors/app.selectors'
 import Button from '@mui/material/Button'
 import Checkbox from '@mui/material/Checkbox'
 import FormControl from '@mui/material/FormControl'
@@ -19,7 +20,7 @@ type FormikErrorType = {
   rememberMe?: boolean
 }
 export const Login = () => {
-  const isLoggidIn = useAppSelector<boolean>(state => state.auth.isLoggedIn)
+  const isLoggidIn = useAppSelector<boolean>(selectIsLoginIn)
   const dispatch = useAppDispatch()
 
   const formik = useFormik({
