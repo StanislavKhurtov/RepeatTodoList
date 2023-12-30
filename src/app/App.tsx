@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 
 import { TaskType } from '@/api/todolist-api'
-import { selectIsInitialized } from '@/selectors/app.selectors'
 import { initializedTC } from '@/app/app-reducer'
 import { useAppSelector } from '@/app/store'
 import { ErrorSnackbar } from '@/components/ErrorSnackbar/ErrorSnackbar'
@@ -11,6 +10,7 @@ import { Linear } from '@/components/Preloader'
 import { Login } from '@/features/Login/login'
 import { TodolistList } from '@/features/TodolistList/TodolistList'
 import { useAppDispatch } from '@/hooks/useAppDispatch'
+import { selectIsInitialized } from '@/selectors/app.selectors'
 
 export type TasksStateType = {
   [key: string]: TaskType[]
