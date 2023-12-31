@@ -1,7 +1,8 @@
 import { RESULT_CODE, authAPI } from '@/api/todolist-api'
 import { AppThunk } from '@/app/store'
 import { authAction } from '@/features/Login/auth-reducer'
-import { handleServerAppError, handleServerNetworkError } from '@/utils/error-utils'
+import { handleServerAppError } from '@/utils/handleServerAppError'
+import { handleServerNetworkError } from '@/utils/handleServerNetworkError'
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { Dispatch } from 'redux'
 
