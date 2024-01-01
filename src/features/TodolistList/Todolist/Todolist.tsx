@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 
 import { TaskStatuses, TaskType } from '@/api/todolist-api'
 import { RequestStatusType } from '@/app/app-reducer'
@@ -6,7 +6,9 @@ import { PlusSquareOutline, Trash } from '@/assets'
 import { AddItemForm } from '@/components/AddItemForm'
 import { EditableSpan } from '@/components/EditableSpan'
 import { Task } from '@/features/TodolistList/Todolist/Task/Task'
+import { tasksThunks } from '@/features/TodolistList/Todolist/task-reducer'
 import { FilterPropsType } from '@/features/TodolistList/Todolist/todolists-reducer'
+import { useAppDispatch } from '@/hooks/useAppDispatch'
 import clsx from 'clsx'
 
 type Props = {
@@ -24,11 +26,11 @@ type Props = {
   title: string
 }
 export const Todolist = React.memo((props: Props) => {
-  //const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch()
 
-  // useEffect(() => {
-  //   dispatch(fetchTasks(props.id))
-  // }, [])
+  useEffect(() => {
+    dispatch(tasksThunks.fetchTasks(props.id))
+  }, [])
 
   const addTask = useCallback(
     (title: string) => {

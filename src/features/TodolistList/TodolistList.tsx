@@ -7,11 +7,7 @@ import { useAppSelector } from '@/app/store'
 import { PlusSquareOutline } from '@/assets'
 import { AddItemForm } from '@/components/AddItemForm'
 import { Todolist } from '@/features/TodolistList/Todolist/Todolist'
-import {
-  addTaskTC,
-  removeTaskTC,
-  updateTaskTC,
-} from '@/features/TodolistList/Todolist/task-reducer'
+import { tasksThunks } from '@/features/TodolistList/Todolist/task-reducer'
 import {
   FilterPropsType,
   TodolistDomainType,
@@ -40,25 +36,25 @@ export const TodolistList = () => {
   //task
   const removeTask = useCallback(
     (todolistId: string, taskId: string) => {
-      dispatch(removeTaskTC(todolistId, taskId))
+      dispatch(tasksThunks.removeTask({ taskId, todolistId }))
     },
     [dispatch]
   )
   const addTask = useCallback(
     (id: string, title: string) => {
-      dispatch(addTaskTC(id, title))
+      dispatch(tasksThunks.addTask({ id, title }))
     },
     [dispatch]
   )
   const changeTaskStatus = useCallback(
     (todolistId: string, taskId: string, status: TaskStatuses) => {
-      dispatch(updateTaskTC(todolistId, taskId, { status }))
+      dispatch(tasksThunks.updateTask({ domainModel: { status }, taskId, todolistId }))
     },
     [dispatch]
   )
   const changeTaskTitle = useCallback(
     (todolistId: string, taskId: string, title: string) => {
-      dispatch(updateTaskTC(todolistId, taskId, { title }))
+      dispatch(tasksThunks.updateTask({ domainModel: { title }, taskId, todolistId }))
     },
     [dispatch]
   )
