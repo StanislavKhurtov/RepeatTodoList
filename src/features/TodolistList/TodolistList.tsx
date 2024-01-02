@@ -13,9 +13,9 @@ import {
   TodolistDomainType,
   addTodolistTC,
   changeTodolistTitleTC,
-  fetchTodolist,
   removeTodolistTC,
   todolistAction,
+  todolistThunks,
 } from '@/features/TodolistList/Todolist/todolists-reducer'
 import { useAppDispatch } from '@/hooks/useAppDispatch'
 import { selectIsLoginIn, selectTasks, selectTodolists } from '@/selectors/app.selectors'
@@ -30,7 +30,7 @@ export const TodolistList = () => {
     if (!isLoggedIn) {
       return
     }
-    dispatch(fetchTodolist)
+    dispatch(todolistThunks.fetchTodolist())
   }, [])
 
   //task
