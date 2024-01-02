@@ -8,7 +8,7 @@ import {
 } from '@/api/todolist-api'
 import { TasksStateType } from '@/app/App'
 import { appAction } from '@/app/app-reducer'
-import { todolistAction } from '@/features/TodolistList/Todolist/todolists-reducer'
+import { todolistAction, todolistThunks } from '@/features/TodolistList/Todolist/todolists-reducer'
 import { createAppAsyncThunk } from '@/utils/createAppAsyncThunk'
 import { handleServerAppError } from '@/utils/handleServerAppError'
 import { handleServerNetworkError } from '@/utils/handleServerNetworkError'
@@ -48,7 +48,7 @@ const slice = createSlice({
       .addCase(todolistAction.removeTodolist, (state, action) => {
         delete state[action.payload.id]
       })
-      .addCase(todolistAction.setTodolist, (state, action) => {
+      .addCase(todolistThunks.fetchTodolist.fulfilled, (state, action) => {
         action.payload.todolists.forEach(tl => {
           state[tl.id] = []
         })
