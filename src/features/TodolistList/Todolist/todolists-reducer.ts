@@ -2,11 +2,19 @@ import { RESULT_CODE, TodolistType, todolistAPI } from '@/api/todolist-api'
 import { RequestStatusType, appAction } from '@/app/app-reducer'
 import { AppThunk } from '@/app/store'
 import { handleServerAppError } from '@/utils/handleServerAppError'
-import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { handleServerNetworkError } from '@/utils/handleServerNetworkError'
+import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { Dispatch } from 'redux'
 
 const initialState = [] as TodolistDomainType[]
 const slice = createSlice({
+  extraReducers: builder => {
+    builder.addCase(fetchTodolist.fulfilled, (state, action) => {
+      action.payload.todolists.forEach(tl => {
+        state.push({ ...tl, entityStatus: 'idle', filter: 'all' })
+      })
+    })
+  },
   initialState,
   name: 'todolists',
   reducers: {
@@ -50,25 +58,32 @@ const slice = createSlice({
         state[index].entityStatus = action.payload.entityStatus
       }
     },
-    setTodolist: (state, action: PayloadAction<{ todolists: TodolistType[] }>) => {
-      action.payload.todolists.forEach(tl => {
-        state.push({ ...tl, entityStatus: 'idle', filter: 'all' })
-      })
-    },
   },
 })
 
 export const todolistAction = slice.actions
 export const todolistReducer = slice.reducer
 
-//thunks
-export const fetchTodolist = async (dispatch: Dispatch<any>) => {
-  appAction.setStatus({ status: 'loading' })
-  const res = await todolistAPI.getTodolist()
+const fetchTodolist = createAsyncThunk<{ todolists: TodolistType[] }, void>(
+  `${slice.name}/fetchTodolist`,
+  async (_, thunkAPI) => {
+    const { dispatch, rejectWithValue } = thunkAPI
 
-  dispatch(todolistAction.setTodolist({ todolists: res.data }))
-  dispatch(appAction.setStatus({ status: 'succeeded' }))
-}
+    try {
+      appAction.setStatus({ status: 'loading' })
+      const res = await todolistAPI.getTodolist()
+
+      dispatch(appAction.setStatus({ status: 'succeeded' }))
+
+      return { todolists: res.data }
+    } catch (error) {
+      handleServerNetworkError(error, dispatch)
+
+      return rejectWithValue(null)
+    }
+  }
+)
+
 export const removeTodolistTC =
   (id: string): AppThunk =>
   (dispatch: Dispatch) => {
@@ -112,6 +127,8 @@ export const changeTodolistTitleTC =
   }
 
 //types
+
+export const todolistThunks = { fetchTodolist }
 
 export type FilterPropsType = 'active' | 'all' | 'completed'
 
