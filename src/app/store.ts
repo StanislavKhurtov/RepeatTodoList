@@ -6,7 +6,7 @@ import { tasksReducer } from '@/features/TodolistList/Todolist/task-reducer'
 import { todolistReducer } from '@/features/TodolistList/Todolist/todolists-reducer'
 import { configureStore } from '@reduxjs/toolkit'
 import { AnyAction, combineReducers } from 'redux'
-import { ThunkAction, ThunkDispatch } from "redux-thunk";
+import { ThunkAction, ThunkDispatch } from 'redux-thunk'
 
 const rootReducer = combineReducers({
   app: appReducer,
