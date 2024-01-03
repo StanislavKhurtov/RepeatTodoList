@@ -11,9 +11,6 @@ import { tasksThunks } from '@/features/TodolistList/Todolist/task-reducer'
 import {
   FilterPropsType,
   TodolistDomainType,
-  addTodolistTC,
-  changeTodolistTitleTC,
-  removeTodolistTC,
   todolistAction,
   todolistThunks,
 } from '@/features/TodolistList/Todolist/todolists-reducer'
@@ -68,16 +65,16 @@ export const TodolistList = () => {
   )
   const addTodolist = useCallback(
     (title: string) => {
-      dispatch(addTodolistTC(title))
+      dispatch(todolistThunks.addTodolist(title))
     },
     [dispatch]
   )
   const removeTodolist = useCallback((id: string) => {
-    dispatch(removeTodolistTC(id))
+    dispatch(todolistThunks.removeTodolist(id))
   }, [])
   const changeTodolistTitle = useCallback(
     (id: string, title: string) => {
-      dispatch(changeTodolistTitleTC(id, title))
+      dispatch(todolistThunks.changeTodolistTitle({ id, title }))
     },
     [dispatch]
   )
