@@ -42,10 +42,10 @@ const slice = createSlice({
           tasksForTodo[index] = { ...tasksForTodo[index], ...action.payload.model }
         }
       })
-      .addCase(todolistAction.addTodolist, (state, action) => {
+      .addCase(todolistThunks.addTodolist.fulfilled, (state, action) => {
         state[action.payload.todolist.id] = []
       })
-      .addCase(todolistAction.removeTodolist, (state, action) => {
+      .addCase(todolistThunks.removeTodolist.fulfilled, (state, action) => {
         delete state[action.payload.id]
       })
       .addCase(todolistThunks.fetchTodolist.fulfilled, (state, action) => {
