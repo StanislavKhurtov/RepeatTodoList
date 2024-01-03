@@ -26,9 +26,9 @@ export const todolistAPI = {
   getTodolist() {
     return instance.get<TodolistType[]>(`todo-lists`)
   },
-  updateTodolist(todolistId: string, title: string) {
-    return instance.put<ResponseType, AxiosResponse<ResponseType>>(`todo-lists/${todolistId}`, {
-      title,
+  updateTodolist(arg: UpdateTodolistTitleArgType) {
+    return instance.put<ResponseType, AxiosResponse<ResponseType>>(`todo-lists/${arg.id}`, {
+      title: arg.title,
     })
   },
 }
@@ -123,6 +123,11 @@ export type AuthParamsType = {
   email: string
   password: string
   rememberMe: boolean
+}
+
+export type UpdateTodolistTitleArgType = {
+  id: string
+  title: string
 }
 
 //enum
