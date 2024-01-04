@@ -1,7 +1,6 @@
 import { useCallback, useEffect } from 'react'
 import { Navigate } from 'react-router-dom'
 
-import { TaskStatuses } from '@/api/todolist-api'
 import { TasksStateType } from '@/app/App'
 import { useAppSelector } from '@/app/store'
 import { PlusSquareOutline } from '@/assets'
@@ -14,8 +13,9 @@ import {
   todolistAction,
   todolistThunks,
 } from '@/features/TodolistList/Todolist/todolists-reducer'
-import { useAppDispatch } from '@/hooks/useAppDispatch'
-import { selectIsLoginIn, selectTasks, selectTodolists } from '@/selectors/app.selectors'
+import { useAppDispatch } from '@/common/hooks/useAppDispatch'
+import { selectIsLoginIn, selectTasks, selectTodolists } from '@/app/app.selectors'
+import { TaskStatuses } from '@/common/enums/common.enums'
 
 export const TodolistList = () => {
   const todolists = useAppSelector<TodolistDomainType[]>(selectTodolists)

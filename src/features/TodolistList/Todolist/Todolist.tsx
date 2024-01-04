@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from 'react'
 
-import { TaskStatuses, TaskType } from '@/api/todolist-api'
+import { TaskType } from '@/common/api/todolist-api'
 import { RequestStatusType } from '@/app/app-reducer'
 import { PlusSquareOutline, Trash } from '@/assets'
 import { AddItemForm } from '@/components/AddItemForm'
@@ -8,8 +8,9 @@ import { EditableSpan } from '@/components/EditableSpan'
 import { Task } from '@/features/TodolistList/Todolist/Task/Task'
 import { tasksThunks } from '@/features/TodolistList/Todolist/task-reducer'
 import { FilterPropsType } from '@/features/TodolistList/Todolist/todolists-reducer'
-import { useAppDispatch } from '@/hooks/useAppDispatch'
+import { useAppDispatch } from '@/common/hooks/useAppDispatch'
 import clsx from 'clsx'
+import { TaskStatuses } from '@/common/enums/common.enums'
 
 type Props = {
   addTask: (todolistId: string, title: string) => void

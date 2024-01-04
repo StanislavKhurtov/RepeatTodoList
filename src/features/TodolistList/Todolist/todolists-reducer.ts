@@ -1,14 +1,10 @@
-import {
-  RESULT_CODE,
-  TodolistType,
-  UpdateTodolistTitleArgType,
-  todolistAPI,
-} from '@/api/todolist-api'
 import { RequestStatusType, appAction } from '@/app/app-reducer'
-import { createAppAsyncThunk } from '@/utils/createAppAsyncThunk'
-import { handleServerAppError } from '@/utils/handleServerAppError'
-import { handleServerNetworkError } from '@/utils/handleServerNetworkError'
+import { TodolistType, UpdateTodolistTitleArgType, todolistAPI } from '@/common/api/todolist-api'
+import { createAppAsyncThunk } from '@/common/utils/createAppAsyncThunk'
+import { handleServerAppError } from '@/common/utils/handleServerAppError'
+import { handleServerNetworkError } from '@/common/utils/handleServerNetworkError'
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { RESULT_CODE } from '@/common/enums/common.enums'
 
 const initialState = [] as TodolistDomainType[]
 const slice = createSlice({
