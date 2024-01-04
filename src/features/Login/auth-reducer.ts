@@ -1,11 +1,13 @@
-import { AuthParamsType, RESULT_CODE, authAPI } from '@/api/todolist-api'
+import { AuthParamsType } from '@/common/api/todolist-api'
 import { appAction } from '@/app/app-reducer'
 import { AppThunk } from '@/app/store'
 import { todolistAction } from '@/features/TodolistList/Todolist/todolists-reducer'
-import { handleServerAppError } from '@/utils/handleServerAppError'
-import { handleServerNetworkError } from '@/utils/handleServerNetworkError'
+import { handleServerAppError } from '@/common/utils/handleServerAppError'
+import { handleServerNetworkError } from '@/common/utils/handleServerNetworkError'
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { Dispatch } from 'redux'
+import { authAPI } from '@/common/api/auth-api'
+import { RESULT_CODE } from '@/common/enums/common.enums'
 
 const slice = createSlice({
   initialState: {
