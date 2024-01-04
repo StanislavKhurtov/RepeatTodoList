@@ -1,11 +1,12 @@
-import { RESULT_CODE, authAPI } from '@/api/todolist-api'
 import { AppThunk } from '@/app/store'
 import { authAction } from '@/features/Login/auth-reducer'
 
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { Dispatch } from 'redux'
-import { handleServerAppError } from '@/utils/handleServerAppError'
-import { handleServerNetworkError } from '@/utils/handleServerNetworkError'
+import { handleServerAppError } from '@/common/utils/handleServerAppError'
+import { handleServerNetworkError } from '@/common/utils/handleServerNetworkError'
+import { authAPI } from '@/common/api/auth-api'
+import { RESULT_CODE } from '@/common/enums/common.enums'
 
 export type RequestStatusType = 'failed' | 'idle' | 'loading' | 'succeeded'
 
