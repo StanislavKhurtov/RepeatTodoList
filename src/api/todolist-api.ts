@@ -147,8 +147,8 @@ export enum TaskPriorities {
   Urgently = 3,
 }
 
-export enum RESULT_CODE {
-  FAILED = 1,
-  RECAPTCHA_FAILED = 2,
-  SUCCEEDED = 0,
-}
+export const RESULT_CODE = {
+  FAILED: 1,
+  RECAPTCHA_FAILED: 2,
+  SUCCEEDED: 0,
+} as const
