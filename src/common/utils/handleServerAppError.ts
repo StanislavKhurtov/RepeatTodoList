@@ -1,7 +1,7 @@
 // generic function
-import { ResponseType } from '@/api/todolist-api'
 import { appAction } from '@/app/app-reducer'
 import { Dispatch } from 'redux'
+import { ResponseType } from '@/common/types/common.types'
 
 export const handleServerAppError = <T>(data: ResponseType<T>, dispatch: Dispatch) => {
   data.messages.length
