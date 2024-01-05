@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 
 import { selectIsInitialized } from '@/app/app.selectors'
-import { initializedTC } from '@/app/app-reducer'
 import { useAppSelector } from '@/app/store'
 import { ErrorSnackbar } from '@/common/components/ErrorSnackbar/ErrorSnackbar'
 import { Header } from '@/common/components/Header'
@@ -11,6 +10,7 @@ import { useAppDispatch } from '@/common/hooks/useAppDispatch'
 import { TaskType } from '@/features/TodolistList/api/task-api'
 import { TodolistList } from '@/features/TodolistList/ui/TodolistList'
 import { Login } from '@/features/auth/ui/login'
+import { authThunk } from '@/features/auth/model/auth-reducer'
 
 export type TasksStateType = {
   [key: string]: TaskType[]
@@ -20,7 +20,7 @@ export const App = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(initializedTC())
+    dispatch(authThunk.initialized())
   }, [])
 
   if (!isInitialized) {
