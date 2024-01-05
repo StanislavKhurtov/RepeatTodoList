@@ -7,9 +7,9 @@ import { EditableSpan } from '@/common/components/EditableSpan'
 import { TaskStatuses } from '@/common/enums/common.enums'
 import { useAppDispatch } from '@/common/hooks/useAppDispatch'
 import { Task } from '@/features/TodolistList/Todolist/Task/Task'
-import { TaskType } from '@/features/TodolistList/task-api'
-import { tasksThunks } from '@/features/TodolistList/task-reducer'
-import { FilterPropsType } from '@/features/TodolistList/todolists-reducer'
+import { TaskType } from '@/features/TodolistList/api/task-api'
+import { tasksThunks } from '@/features/TodolistList/model/task-reducer'
+import { FilterPropsType } from '@/features/TodolistList/model/todolists-reducer'
 import clsx from 'clsx'
 
 type Props = {

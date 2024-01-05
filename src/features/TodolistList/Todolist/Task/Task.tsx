@@ -3,7 +3,7 @@ import React, { ChangeEvent } from 'react'
 import { Trash } from '@/assets'
 import { EditableSpan } from '@/common/components/EditableSpan'
 import { TaskStatuses } from '@/common/enums/common.enums'
-import { TaskType } from '@/features/TodolistList/task-api'
+import { TaskType } from '@/features/TodolistList/api/task-api'
 import clsx from 'clsx'
 
 type TaskProps = {

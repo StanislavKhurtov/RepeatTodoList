@@ -1,13 +1,13 @@
-import { AuthParamsType } from '@/features/TodolistList/todolist-api'
 import { appAction } from '@/app/app-reducer'
 import { AppThunk } from '@/app/store'
-import { todolistAction } from '@/features/TodolistList/todolists-reducer'
+import { RESULT_CODE } from '@/common/enums/common.enums'
 import { handleServerAppError } from '@/common/utils/handleServerAppError'
 import { handleServerNetworkError } from '@/common/utils/handleServerNetworkError'
+import { todolistAction } from '@/features/TodolistList/model/todolists-reducer'
+import { authAPI } from '@/features/auth/api/auth-api'
+import { AuthParamsType } from '@/features/auth/api/auth-api.types'
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { Dispatch } from 'redux'
-import { authAPI } from '@/features/auth/auth-api'
-import { RESULT_CODE } from '@/common/enums/common.enums'
 
 const slice = createSlice({
   initialState: {
