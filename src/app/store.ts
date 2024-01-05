@@ -1,9 +1,9 @@
 import { TypedUseSelectorHook, useSelector } from 'react-redux'
 
 import { appReducer } from '@/app/app-reducer'
-import { authReducer } from '@/features/Login/auth-reducer'
-import { tasksReducer } from '@/features/TodolistList/Todolist/task-reducer'
-import { todolistReducer } from '@/features/TodolistList/Todolist/todolists-reducer'
+import { authReducer } from '@/features/auth/auth-reducer'
+import { tasksReducer } from '@/features/TodolistList/task-reducer'
+import { todolistReducer } from '@/features/TodolistList/todolists-reducer'
 import { configureStore } from '@reduxjs/toolkit'
 import { AnyAction, combineReducers } from 'redux'
 import { ThunkAction, ThunkDispatch } from 'redux-thunk'

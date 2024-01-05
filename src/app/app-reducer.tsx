@@ -1,11 +1,11 @@
 import { AppThunk } from '@/app/store'
-import { authAction } from '@/features/Login/auth-reducer'
+import { authAction } from '@/features/auth/auth-reducer'
 
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { Dispatch } from 'redux'
 import { handleServerAppError } from '@/common/utils/handleServerAppError'
 import { handleServerNetworkError } from '@/common/utils/handleServerNetworkError'
-import { authAPI } from '@/common/api/auth-api'
+import { authAPI } from '@/features/auth/auth-api'
 import { RESULT_CODE } from '@/common/enums/common.enums'
 
 export type RequestStatusType = 'failed' | 'idle' | 'loading' | 'succeeded'

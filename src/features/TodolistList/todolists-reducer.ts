@@ -1,5 +1,9 @@
 import { RequestStatusType, appAction } from '@/app/app-reducer'
-import { TodolistType, UpdateTodolistTitleArgType, todolistAPI } from '@/common/api/todolist-api'
+import {
+  TodolistType,
+  UpdateTodolistTitleArgType,
+  todolistAPI,
+} from '@/features/TodolistList/todolist-api'
 import { createAppAsyncThunk } from '@/common/utils/createAppAsyncThunk'
 import { handleServerAppError } from '@/common/utils/handleServerAppError'
 import { handleServerNetworkError } from '@/common/utils/handleServerNetworkError'
@@ -65,7 +69,7 @@ const slice = createSlice({
 export const todolistAction = slice.actions
 export const todolistReducer = slice.reducer
 
-const fetchTodolist = createAsyncThunk<{ todolists: TodolistType[] }, void>(
+const fetchTodolist = createAppAsyncThunk<{ todolists: TodolistType[] }, void>(
   `${slice.name}/fetchTodolist`,
   async (_, thunkAPI) => {
     const { dispatch, rejectWithValue } = thunkAPI

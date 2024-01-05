@@ -1,9 +1,9 @@
 import { Navigate } from 'react-router-dom'
 
 import { useAppSelector } from '@/app/store'
-import { loginTC } from '@/features/Login/auth-reducer'
+import { loginTC } from '@/features/auth/auth-reducer'
 import { useAppDispatch } from '@/common/hooks/useAppDispatch'
-import { selectIsLoginIn } from '@/app/app.selectors'
+
 import Button from '@mui/material/Button'
 import Checkbox from '@mui/material/Checkbox'
 import FormControl from '@mui/material/FormControl'
@@ -13,6 +13,7 @@ import FormLabel from '@mui/material/FormLabel'
 import Grid from '@mui/material/Grid'
 import TextField from '@mui/material/TextField'
 import { useFormik } from 'formik'
+import { selectIsLoginIn } from '@/features/auth/auth.selectors'
 
 type FormikErrorType = {
   email?: string

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-import { todolistAPI } from '@/common/api/todolist-api'
-import { taskAPI } from '@/common/api/task-api'
+import { taskAPI } from '@/features/TodolistList/task-api'
+import { todolistAPI } from '@/features/TodolistList/todolist-api'
 
 export default {
   title: 'API',
@@ -77,7 +77,7 @@ export const UpdateTodolistTitle = () => {
   const [todolistId, setTodolistId] = useState('')
   const [title, setTitle] = useState('')
   const updateTodo = () => {
-    todolistAPI.updateTodolist(todolistId, title).then(res => {
+    todolistAPI.updateTodolist({ id: todolistId, title }).then(res => {
       setState(res.data)
     })
   }

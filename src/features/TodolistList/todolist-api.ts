@@ -1,5 +1,4 @@
 import { instance } from '@/common/api/common.api'
-import { TaskPriorities, TaskStatuses } from '@/common/enums/common.enums'
 import { ResponseType } from '@/common/types/common.types'
 import { AxiosResponse } from 'axios'
 
@@ -35,41 +34,6 @@ export type TodolistType = {
   id: string
   order: number
   title: string
-}
-
-export type GetTaskResponse = {
-  error: string
-  items: TaskType[]
-  totalCount: number
-}
-
-export type TaskType = {
-  addedDate: string
-  deadline: string
-  description: string
-  id: string
-  order: number
-  priority: TaskPriorities
-  startDate: string
-  status: TaskStatuses
-  title: string
-  todoListId: string
-}
-
-export type UpdateTaskModelType = {
-  deadline: string
-  description: string
-  priority: TaskPriorities
-  startDate: string
-  status: TaskStatuses
-  title: string
-}
-
-export type AuthParamsType = {
-  captcha?: string
-  email: string
-  password: string
-  rememberMe: boolean
 }
 
 export type UpdateTodolistTitleArgType = {

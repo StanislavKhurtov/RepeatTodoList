@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from 'react'
 
-import { TaskType } from '@/common/api/todolist-api'
+import { TaskType } from '@/features/TodolistList/todolist-api'
 import { Trash } from '@/assets'
 import { EditableSpan } from '@/components/EditableSpan'
 import clsx from 'clsx'

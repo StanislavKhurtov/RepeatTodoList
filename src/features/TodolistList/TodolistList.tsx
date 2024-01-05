@@ -6,16 +6,18 @@ import { useAppSelector } from '@/app/store'
 import { PlusSquareOutline } from '@/assets'
 import { AddItemForm } from '@/components/AddItemForm'
 import { Todolist } from '@/features/TodolistList/Todolist/Todolist'
-import { tasksThunks } from '@/features/TodolistList/Todolist/task-reducer'
+import { tasksThunks } from '@/features/TodolistList/task-reducer'
 import {
   FilterPropsType,
   TodolistDomainType,
   todolistAction,
   todolistThunks,
-} from '@/features/TodolistList/Todolist/todolists-reducer'
+} from '@/features/TodolistList/todolists-reducer'
 import { useAppDispatch } from '@/common/hooks/useAppDispatch'
-import { selectIsLoginIn, selectTasks, selectTodolists } from '@/app/app.selectors'
 import { TaskStatuses } from '@/common/enums/common.enums'
+import { selectIsLoginIn } from '@/features/auth/auth.selectors'
+import { selectTodolists } from '@/features/TodolistList/todolists.selectors'
+import { selectTasks } from '@/features/TodolistList/tasks.selectors'
 
 export const TodolistList = () => {
   const todolists = useAppSelector<TodolistDomainType[]>(selectTodolists)
