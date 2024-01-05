@@ -1,13 +1,12 @@
 //todo
 
 .todo {
-  flex: 1 0 20%;
-  border: 1px solid #FFFFFF;
-  padding: 10px;
-  border-radius: 5px;
+  flex: 0 0 22.8%;
+  border: 2px solid #6a9bd8;
+  border-radius: 10px;
+  padding: 20px;
   word-break: break-word;
   flex-wrap: wrap;
-
 }
 
 .todo__body {
@@ -48,7 +47,6 @@
   gap: 10px;
 }
 
-
 .todo__buttons-block {
   display: flex;
   gap: 20px;
@@ -57,7 +55,6 @@
 
 .todo__btn {
   padding: 6px 12px;
-  border: 1px solid #FFFFFF;
   border-radius: 5px;
   white-space: nowrap;
 }
@@ -70,7 +67,6 @@
   }
 }
 
-
 //AddItemForm
 
 .AddItemForm {
@@ -78,22 +74,22 @@
   display: flex;
   gap: 5px;
   position: relative;
-
 }
 
 .AddItemForm__input {
   width: 100%;
-  padding: 7px 15px;
+  padding: 10px 15px;
+  font-size: 18px;
+  line-height: 150%;
   border-radius: 5px;
   background: transparent;
-  border: 1px solid #FFFFFF;
-  font-size: 14px;
-  line-height: 150%;
-
+  border: 1px solid #6a9bd8;
+  color: #ffffff;
 }
 
 .AddItemForm__btn {
-  transition: all 0.4s;
+  padding: 0 10px;
+  border-radius: 5px;
 }
 
 .error {
@@ -121,4 +117,3 @@
   display: flex;
   align-items: center;
 }
-

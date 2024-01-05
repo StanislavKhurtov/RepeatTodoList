@@ -9,8 +9,8 @@ import { Linear } from '@/common/components/Preloader'
 import { useAppDispatch } from '@/common/hooks/useAppDispatch'
 import { TaskType } from '@/features/TodolistList/api/task-api'
 import { TodolistList } from '@/features/TodolistList/ui/TodolistList'
-import { Login } from '@/features/auth/ui/login'
 import { authThunk } from '@/features/auth/model/auth-reducer'
+import { Login } from '@/features/auth/ui/login'
 
 export type TasksStateType = {
   [key: string]: TaskType[]

@@ -14,7 +14,7 @@
 }
 
 .activeFilter {
-  background-color: aqua;
+  background-color: #6849b6;
   color: black;
 }
 
@@ -23,32 +23,13 @@
   opacity: 0.5;
 }
 
-.icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  color: aqua;
-  transition: color 0.4s;
-
-  &:hover {
-    color: darkmagenta;
-  }
-}
-
 .iconDelete {
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: aqua;
   transition: color 0.4s;
-
-  &:hover {
-    color: darkgray;
-  }
 }
 
 .disabled {
@@ -58,6 +39,3 @@
 .formError {
   font-size: 12px;
 }
-
-
-
