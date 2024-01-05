@@ -1,11 +1,11 @@
+import { selectStatus } from '@/app/app.selectors'
 import { RequestStatusType } from '@/app/app-reducer'
 import { useAppSelector } from '@/app/store'
 import { LogOutIcon } from '@/assets'
-import { Linear } from '@/components/Preloader'
-import { logOutTC } from '@/features/auth/auth-reducer'
+import { Linear } from '@/common/components/Preloader'
 import { useAppDispatch } from '@/common/hooks/useAppDispatch'
-import { selectStatus } from '@/app/app.selectors'
 import { selectIsLoginIn } from '@/features/auth/auth.selectors'
+import { logOutTC } from '@/features/auth/auth-reducer'
 
 export const Header = () => {
   const status = useAppSelector<RequestStatusType>(selectStatus)

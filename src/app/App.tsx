@@ -1,16 +1,16 @@
 import { useEffect } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 
+import { selectIsInitialized } from '@/app/app.selectors'
 import { initializedTC } from '@/app/app-reducer'
 import { useAppSelector } from '@/app/store'
-import { TaskType } from '@/features/TodolistList/todolist-api'
+import { ErrorSnackbar } from '@/common/components/ErrorSnackbar/ErrorSnackbar'
+import { Header } from '@/common/components/Header'
+import { Linear } from '@/common/components/Preloader'
 import { useAppDispatch } from '@/common/hooks/useAppDispatch'
-import { ErrorSnackbar } from '@/components/ErrorSnackbar/ErrorSnackbar'
-import { Header } from '@/components/Header'
-import { Linear } from '@/components/Preloader'
-import { Login } from '@/features/auth/login'
 import { TodolistList } from '@/features/TodolistList/TodolistList'
-import { selectIsInitialized } from '@/app/app.selectors'
+import { TaskType } from '@/features/TodolistList/task-api'
+import { Login } from '@/features/auth/login'
 
 export type TasksStateType = {
   [key: string]: TaskType[]

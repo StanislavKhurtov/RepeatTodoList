@@ -1,10 +1,10 @@
 import React, { ChangeEvent } from 'react'
 
-import { TaskType } from '@/features/TodolistList/todolist-api'
 import { Trash } from '@/assets'
-import { EditableSpan } from '@/components/EditableSpan'
-import clsx from 'clsx'
+import { EditableSpan } from '@/common/components/EditableSpan'
 import { TaskStatuses } from '@/common/enums/common.enums'
+import { TaskType } from '@/features/TodolistList/task-api'
+import clsx from 'clsx'
 
 type TaskProps = {
   changeTaskStatus: (todolistId: string, taskId: string, status: TaskStatuses) => void
