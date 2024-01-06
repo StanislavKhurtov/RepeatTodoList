@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom'
 import { useAppSelector } from '@/app/store'
 import { useAppDispatch } from '@/common/hooks/useAppDispatch'
 import { selectIsLoginIn } from '@/features/auth/model/auth.selectors'
-
+import { authThunk } from '@/features/auth/model/auth-reducer'
 import Button from '@mui/material/Button'
 import Checkbox from '@mui/material/Checkbox'
 import FormControl from '@mui/material/FormControl'
@@ -13,7 +13,6 @@ import FormLabel from '@mui/material/FormLabel'
 import Grid from '@mui/material/Grid'
 import TextField from '@mui/material/TextField'
 import { useFormik } from 'formik'
-import { authThunk } from '@/features/auth/model/auth-reducer'
 
 type FormikErrorType = {
   email?: string

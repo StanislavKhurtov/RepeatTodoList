@@ -5,7 +5,7 @@ import { PlusSquareOutline, Trash } from '@/assets'
 import { AddItemForm } from '@/common/components/AddItemForm'
 import { EditableSpan } from '@/common/components/EditableSpan'
 import { TaskStatuses } from '@/common/enums/common.enums'
-import { useAppDispatch } from '@/common/hooks/useAppDispatch'
+import { useActions } from '@/common/hooks/useActions'
 import { Task } from '@/features/TodolistList/Todolist/Task/Task'
 import { TaskType } from '@/features/TodolistList/api/task-api'
 import { tasksThunks } from '@/features/TodolistList/model/task-reducer'
@@ -27,10 +27,10 @@ type Props = {
   title: string
 }
 export const Todolist = React.memo((props: Props) => {
-  const dispatch = useAppDispatch()
+  const { fetchTasks } = useActions(tasksThunks)
 
   useEffect(() => {
-    dispatch(tasksThunks.fetchTasks(props.id))
+    fetchTasks(props.id)
   }, [])
 
   const addTask = useCallback(
@@ -49,17 +49,11 @@ export const Todolist = React.memo((props: Props) => {
     [props.changeTodolistTitle, props.id]
   )
 
-  const onAllClickHandler = useCallback(
-    () => props.changeFilter(props.id, 'all'),
-    [props.changeFilter, props.id]
-  )
-  const onActiveClickHandler = useCallback(
-    () => props.changeFilter(props.id, 'active'),
-    [props.changeFilter, props.id]
-  )
+  const onAllClickHandler = useCallback(() => props.changeFilter(props.id, 'all'), [props])
+  const onActiveClickHandler = useCallback(() => props.changeFilter(props.id, 'active'), [props])
   const onCompletedClickHandler = useCallback(
     () => props.changeFilter(props.id, 'completed'),
-    [props.changeFilter, props.id]
+    [props]
   )
 
   let taskForTodolist = props.tasks

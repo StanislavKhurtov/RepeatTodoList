@@ -3,16 +3,16 @@ import { RequestStatusType } from '@/app/app-reducer'
 import { useAppSelector } from '@/app/store'
 import { LogOutIcon } from '@/assets'
 import { Linear } from '@/common/components/Preloader'
-import { useAppDispatch } from '@/common/hooks/useAppDispatch'
+import { useActions } from '@/common/hooks/useActions'
 import { selectIsLoginIn } from '@/features/auth/model/auth.selectors'
 import { authThunk } from '@/features/auth/model/auth-reducer'
 
 export const Header = () => {
   const status = useAppSelector<RequestStatusType>(selectStatus)
   const isLoggidIn = useAppSelector<boolean>(selectIsLoginIn)
-  const dispatch = useAppDispatch()
-  const logOut = () => {
-    dispatch(authThunk.logOut())
+  const { logOut } = useActions(authThunk)
+  const logout = () => {
+    logOut()
   }
 
   return (
@@ -21,7 +21,7 @@ export const Header = () => {
         <div className={'header__container'}>
           <div className={'header__logo'}>TasksAssistant</div>
           {isLoggidIn ? (
-            <button className={'header__btn'} onClick={logOut}>
+            <button className={'header__btn'} onClick={logout}>
               Log Out
               <LogOutIcon className={'header__icon'} />
             </button>

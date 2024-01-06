@@ -6,6 +6,7 @@ import { useAppSelector } from '@/app/store'
 import { PlusSquareOutline } from '@/assets'
 import { AddItemForm } from '@/common/components/AddItemForm'
 import { TaskStatuses } from '@/common/enums/common.enums'
+import { useActions } from '@/common/hooks/useActions'
 import { useAppDispatch } from '@/common/hooks/useAppDispatch'
 import { Todolist } from '@/features/TodolistList/Todolist/Todolist'
 import { tasksThunks } from '@/features/TodolistList/model/task-reducer'
@@ -24,59 +25,56 @@ export const TodolistList = () => {
   const tasks = useAppSelector<TasksStateType>(selectTasks)
   const isLoggedIn = useAppSelector<boolean>(selectIsLoginIn)
   const dispatch = useAppDispatch()
+  const {
+    addTask,
+    addTodolist,
+    changeTodolistTitle,
+    fetchTodolist,
+    removeTask,
+    removeTodolist,
+    updateTask,
+  } = useActions({
+    ...todolistThunks,
+    ...tasksThunks,
+  })
 
   useEffect(() => {
     if (!isLoggedIn) {
       return
     }
-    dispatch(todolistThunks.fetchTodolist())
+    fetchTodolist()
   }, [])
 
   //task
-  const removeTask = useCallback(
-    (todolistId: string, taskId: string) => {
-      dispatch(tasksThunks.removeTask({ taskId, todolistId }))
-    },
-    [dispatch]
-  )
-  const addTask = useCallback(
-    (id: string, title: string) => {
-      dispatch(tasksThunks.addTask({ id, title }))
-    },
-    [dispatch]
-  )
+  const removeTaskCB = useCallback((todolistId: string, taskId: string) => {
+    removeTask({ taskId, todolistId })
+  }, [])
+  const addTaskCB = useCallback((id: string, title: string) => {
+    addTask({ id, title })
+  }, [])
   const changeTaskStatus = useCallback(
     (todolistId: string, taskId: string, status: TaskStatuses) => {
-      dispatch(tasksThunks.updateTask({ domainModel: { status }, taskId, todolistId }))
+      updateTask({ domainModel: { status }, taskId, todolistId })
     },
-    [dispatch]
+    []
   )
-  const changeTaskTitle = useCallback(
-    (todolistId: string, taskId: string, title: string) => {
-      dispatch(tasksThunks.updateTask({ domainModel: { title }, taskId, todolistId }))
-    },
-    [dispatch]
-  )
+  const changeTaskTitle = useCallback((todolistId: string, taskId: string, title: string) => {
+    updateTask({ domainModel: { title }, taskId, todolistId })
+  }, [])
 
   //todo
-  const changeFilter = useCallback(
-    (id: string, filter: FilterPropsType) => {
-      dispatch(todolistAction.changeTodolistFilter({ filter, id }))
-    },
-    [dispatch]
-  )
-  const addTodolist = useCallback(
-    (title: string) => {
-      dispatch(todolistThunks.addTodolist(title))
-    },
-    [dispatch]
-  )
-  const removeTodolist = useCallback((id: string) => {
-    dispatch(todolistThunks.removeTodolist(id))
+  const changeFilter = useCallback((id: string, filter: FilterPropsType) => {
+    dispatch(todolistAction.changeTodolistFilter({ filter, id }))
   }, [])
-  const changeTodolistTitle = useCallback(
+  const addTodolistCB = useCallback((title: string) => {
+    addTodolist(title)
+  }, [])
+  const removeTodolistCB = useCallback((id: string) => {
+    removeTodolist(id)
+  }, [])
+  const changeTodolistTitleCB = useCallback(
     (id: string, title: string) => {
-      dispatch(todolistThunks.changeTodolistTitle({ id, title }))
+      changeTodolistTitle({ id, title })
     },
     [dispatch]
   )
@@ -88,7 +86,7 @@ export const TodolistList = () => {
   return (
     <div className={'home__container'}>
       <AddItemForm
-        addItem={addTodolist}
+        addItem={addTodolistCB}
         label={'New Todolist'}
         trigger={<PlusSquareOutline className={'icon'} />}
       />
@@ -97,17 +95,17 @@ export const TodolistList = () => {
 
         return (
           <Todolist
-            addTask={addTask}
+            addTask={addTaskCB}
             changeFilter={changeFilter}
             changeTaskStatus={changeTaskStatus}
             changeTaskTitle={changeTaskTitle}
-            changeTodolistTitle={changeTodolistTitle}
+            changeTodolistTitle={changeTodolistTitleCB}
             entityStatus={todolist.entityStatus}
             filter={todolist.filter}
             id={todolist.id}
             key={todolist.id}
-            removeTask={removeTask}
-            removeTodolist={removeTodolist}
+            removeTask={removeTaskCB}
+            removeTodolist={removeTodolistCB}
             tasks={taskForTodolist}
             title={todolist.title}
           />
