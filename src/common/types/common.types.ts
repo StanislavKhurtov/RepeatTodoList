@@ -1,6 +1,10 @@
 export type ResponseType<D = {}> = {
   data: D
-  fieldsErrors: Array<string>
+  fieldsErrors: FieldErrorType[]
   messages: Array<string>
   resultCode: number
+}
+export type FieldErrorType = {
+  error: string
+  field: string
 }

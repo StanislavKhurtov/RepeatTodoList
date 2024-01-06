@@ -2,6 +2,13 @@ import { appAction } from '@/app/app-reducer'
 import { AppDispatch } from '@/app/store'
 import axios from 'axios'
 
+/**
+ * Handles server network errors and updates the Redux store accordingly.
+ *
+ * @param {unknown} err - The error object representing the network error.
+ * @param {AppDispatch} dispatch - The function from the Redux store to dispatch actions.
+ * @returns {void}
+ */
 export const handleServerNetworkError = (err: unknown, dispatch: AppDispatch): void => {
   let errorMessage = 'Some error occurred'
 

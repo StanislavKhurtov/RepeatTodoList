@@ -6,7 +6,7 @@ import { useAppSelector } from '@/app/store'
 import { ErrorSnackbar } from '@/common/components/ErrorSnackbar/ErrorSnackbar'
 import { Header } from '@/common/components/Header'
 import { Linear } from '@/common/components/Preloader'
-import { useAppDispatch } from '@/common/hooks/useAppDispatch'
+import { useActions } from '@/common/hooks/useActions'
 import { TaskType } from '@/features/TodolistList/api/task-api'
 import { TodolistList } from '@/features/TodolistList/ui/TodolistList'
 import { authThunk } from '@/features/auth/model/auth-reducer'
@@ -17,10 +17,10 @@ export type TasksStateType = {
 }
 export const App = () => {
   const isInitialized = useAppSelector<boolean>(selectIsInitialized)
-  const dispatch = useAppDispatch()
+  const { initialized } = useActions(authThunk)
 
   useEffect(() => {
-    dispatch(authThunk.initialized())
+    initialized()
   }, [])
 
   if (!isInitialized) {
