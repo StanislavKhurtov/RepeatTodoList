@@ -97,6 +97,7 @@ const initialized = createAppAsyncThunk<{ isLoggedIn: boolean }, void>(
       } else {
         //handleServerAppError(res.data, dispatch)
         dispatch(appAction.setStatus({ status: 'failed' }))
+
         return rejectWithValue(null)
       }
     } catch (e) {

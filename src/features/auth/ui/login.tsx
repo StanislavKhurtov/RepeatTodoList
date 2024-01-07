@@ -1,9 +1,8 @@
 import { Navigate } from 'react-router-dom'
 
 import { useAppSelector } from '@/app/store'
-import { useAppDispatch } from '@/common/hooks/useAppDispatch'
 import { selectIsLoginIn } from '@/features/auth/model/auth.selectors'
-import { authThunk } from '@/features/auth/model/auth-reducer'
+import { useLogin } from '@/features/auth/ui/useLogin'
 import Button from '@mui/material/Button'
 import Checkbox from '@mui/material/Checkbox'
 import FormControl from '@mui/material/FormControl'
@@ -12,43 +11,10 @@ import FormGroup from '@mui/material/FormGroup'
 import FormLabel from '@mui/material/FormLabel'
 import Grid from '@mui/material/Grid'
 import TextField from '@mui/material/TextField'
-import { useFormik } from 'formik'
 
-type FormikErrorType = {
-  email?: string
-  password?: string
-  rememberMe?: boolean
-}
 export const Login = () => {
+  const { formik } = useLogin()
   const isLoggidIn = useAppSelector<boolean>(selectIsLoginIn)
-  const dispatch = useAppDispatch()
-
-  const formik = useFormik({
-    initialValues: {
-      email: '',
-      password: '',
-      rememberMe: false,
-    },
-    onSubmit: values => {
-      dispatch(authThunk.logIn(values))
-    },
-    validate: values => {
-      const errors: FormikErrorType = {}
-
-      if (!values.email) {
-        errors.email = 'Required'
-      } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-        errors.email = 'Invalid email address'
-      }
-      if (!values.password) {
-        errors.password = 'Required'
-      } else if (values.password.length < 3) {
-        errors.password = 'Must be 3 characters or less'
-      }
-
-      return errors
-    },
-  })
 
   if (isLoggidIn) {
     return <Navigate to={'/'} />
