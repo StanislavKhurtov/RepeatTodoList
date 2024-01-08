@@ -6,11 +6,11 @@ import { useAppSelector } from '@/app/store'
 import { PlusSquareOutline } from '@/assets'
 import { AddItemForm } from '@/common/components/AddItemForm'
 import { useActions } from '@/common/hooks/useActions'
-import { Todolist } from '@/features/TodolistList/Todolist/Todolist'
 import { tasksThunks } from '@/features/TodolistList/model/task-reducer'
 import { selectTasks } from '@/features/TodolistList/model/tasks.selectors'
 import { selectTodolists } from '@/features/TodolistList/model/todolists.selectors'
 import { TodolistDomainType, todolistThunks } from '@/features/TodolistList/model/todolists-reducer'
+import { Todolist } from '@/features/TodolistList/ui/Todolist/Todolist'
 import { selectIsLoginIn } from '@/features/auth/model/auth.selectors'
 
 export const TodolistList = () => {
