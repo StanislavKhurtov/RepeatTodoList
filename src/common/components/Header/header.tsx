@@ -1,5 +1,5 @@
 import { selectStatus } from '@/app/app.selectors'
-import { RequestStatusType } from '@/app/app-reducer'
+import { RequestStatusType } from '@/app/appSlice'
 import { useAppSelector } from '@/app/store'
 import { LogOutIcon } from '@/assets'
 import { Linear } from '@/common/components/Preloader'

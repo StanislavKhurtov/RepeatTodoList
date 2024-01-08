@@ -1,12 +1,13 @@
 import { TasksStateType } from '@/app/App'
-import { appAction } from '@/app/app-reducer'
+import { appAction } from '@/app/appSlice'
+import { RESULT_CODE, TaskPriorities, TaskStatuses } from '@/common/enums/common.enums'
 import { createAppAsyncThunk } from '@/common/utils/createAppAsyncThunk'
 import { handleServerAppError } from '@/common/utils/handleServerAppError'
 import { handleServerNetworkError } from '@/common/utils/handleServerNetworkError'
+import { tasksSlice } from '@/features/TodolistList/api/tasksSlice'
+import { TaskType, UpdateTaskModelType } from '@/features/TodolistList/api/tasksSlice.types'
 import { todolistAction, todolistThunks } from '@/features/TodolistList/model/todolists-reducer'
 import { createSlice } from '@reduxjs/toolkit'
-import { taskAPI, TaskType, UpdateTaskModelType } from '@/features/TodolistList/api/task-api'
-import { RESULT_CODE, TaskPriorities, TaskStatuses } from '@/common/enums/common.enums'
 
 const initialState = {} as TasksStateType
 const slice = createSlice({
@@ -66,7 +67,7 @@ const fetchTasks = createAppAsyncThunk<{ tasks: TaskType[]; todolistId: string }
 
     try {
       dispatch(appAction.setStatus({ status: 'loading' }))
-      const res = await taskAPI.getTask(todolistId)
+      const res = await tasksSlice.getTask(todolistId)
 
       dispatch(appAction.setStatus({ status: 'succeeded' }))
 
@@ -87,7 +88,7 @@ const removeTask = createAppAsyncThunk<
 
   try {
     dispatch(appAction.setStatus({ status: 'loading' }))
-    const res = await taskAPI.deleteTask(arg.todolistId, arg.taskId)
+    const res = await tasksSlice.deleteTask(arg.todolistId, arg.taskId)
 
     if (res.data.resultCode === RESULT_CODE.SUCCEEDED) {
       dispatch(appAction.setStatus({ status: 'succeeded' }))
@@ -112,7 +113,7 @@ const addTask = createAppAsyncThunk<{ task: TaskType }, { id: string; title: str
 
     try {
       dispatch(appAction.setStatus({ status: 'loading' }))
-      const res = await taskAPI.createTask(arg.id, arg.title)
+      const res = await tasksSlice.createTask(arg.id, arg.title)
 
       if (res.data.resultCode === RESULT_CODE.SUCCEEDED) {
         dispatch(appAction.setStatus({ status: 'succeeded' }))
@@ -158,7 +159,7 @@ const updateTask = createAppAsyncThunk<
     }
 
     dispatch(appAction.setStatus({ status: 'loading' }))
-    const res = await taskAPI.updateTask(arg.todolistId, arg.taskId, apiModel)
+    const res = await tasksSlice.updateTask(arg.todolistId, arg.taskId, apiModel)
 
     if (res.data.resultCode === RESULT_CODE.SUCCEEDED) {
       dispatch(appAction.setStatus({ status: 'succeeded' }))

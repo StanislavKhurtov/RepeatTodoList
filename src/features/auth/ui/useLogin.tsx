@@ -1,4 +1,6 @@
 import { useActions } from '@/common/hooks/useActions'
+import { ResponseType } from '@/common/types/common.types'
+import { AuthParamsType } from '@/features/auth/api/auth-api.types'
 import { authThunk } from '@/features/auth/model/auth-reducer'
 import { useFormik } from 'formik'
 
@@ -16,8 +18,14 @@ export const useLogin = () => {
       password: '',
       rememberMe: false,
     },
-    onSubmit: values => {
+    onSubmit: (values: AuthParamsType, formikHelpers) => {
       logIn(values)
+        .unwrap()
+        .catch((err: ResponseType) => {
+          err.fieldsErrors?.forEach(fieldError => {
+            return formikHelpers.setFieldError(fieldError.field, fieldError.error)
+          })
+        })
     },
     validate: values => {
       const errors: FormikErrorType = {}

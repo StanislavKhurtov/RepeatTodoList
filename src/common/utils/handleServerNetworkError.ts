@@ -1,4 +1,4 @@
-import { appAction } from '@/app/app-reducer'
+import { appAction } from '@/app/appSlice'
 import { AppDispatch } from '@/app/store'
 import axios from 'axios'
 

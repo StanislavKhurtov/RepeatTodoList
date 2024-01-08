@@ -1,3 +1,5 @@
+export { default as ArrowBack } from './arrow-ios-back-outline'
+export { default as ArrowForward } from './arrow-ios-forward-outline'
 export { default as LogOutIcon } from './log-out-outline'
 export { default as PlusSquareOutline } from './plus-square-outline'
 export { default as Trash } from './trash'

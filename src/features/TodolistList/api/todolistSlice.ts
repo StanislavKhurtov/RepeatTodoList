@@ -1,8 +1,12 @@
 import { instance } from '@/common/api/common.api'
 import { ResponseType } from '@/common/types/common.types'
+import {
+  TodolistType,
+  UpdateTodolistTitleArgType,
+} from '@/features/TodolistList/api/todolistSlice.types'
 import { AxiosResponse } from 'axios'
 
-export const todolistAPI = {
+export const todolistSlice = {
   createTodolist(title: string) {
     return instance.post<
       ResponseType<{ item: TodolistType }>,
@@ -25,18 +29,4 @@ export const todolistAPI = {
       title: arg.title,
     })
   },
-}
-
-//types
-
-export type TodolistType = {
-  addedDate: string
-  id: string
-  order: number
-  title: string
-}
-
-export type UpdateTodolistTitleArgType = {
-  id: string
-  title: string
 }

@@ -1,4 +1,4 @@
-import { RequestStatusType, appAction } from '@/app/app-reducer'
+import { RequestStatusType, appAction } from '@/app/appSlice'
 import { RESULT_CODE } from '@/common/enums/common.enums'
 import { createAppAsyncThunk } from '@/common/utils/createAppAsyncThunk'
 import { handleServerAppError } from '@/common/utils/handleServerAppError'
@@ -6,8 +6,8 @@ import { handleServerNetworkError } from '@/common/utils/handleServerNetworkErro
 import {
   TodolistType,
   UpdateTodolistTitleArgType,
-  todolistAPI,
-} from '@/features/TodolistList/api/todolist-api'
+  todolistSlice,
+} from '@/features/TodolistList/api/todolistSlice'
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 const initialState = [] as TodolistDomainType[]
@@ -76,7 +76,7 @@ const fetchTodolist = createAppAsyncThunk<{ todolists: TodolistType[] }, void>(
 
     try {
       appAction.setStatus({ status: 'loading' })
-      const res = await todolistAPI.getTodolist()
+      const res = await todolistSlice.getTodolist()
 
       dispatch(appAction.setStatus({ status: 'succeeded' }))
 
@@ -97,7 +97,7 @@ const removeTodolist = createAppAsyncThunk<{ id: string }, string>(
     try {
       dispatch(appAction.setStatus({ status: 'loading' }))
       dispatch(todolistAction.setEntityStatus({ entityStatus: 'loading', id }))
-      const res = await todolistAPI.deleteTodolist(id)
+      const res = await todolistSlice.deleteTodolist(id)
 
       if (res.data.resultCode === RESULT_CODE.SUCCEEDED) {
         dispatch(todolistAction.setEntityStatus({ entityStatus: 'succeeded', id }))
@@ -125,7 +125,7 @@ const addTodolist = createAppAsyncThunk<{ todolist: TodolistType }, string>(
 
     try {
       dispatch(appAction.setStatus({ status: 'loading' }))
-      const res = await todolistAPI.createTodolist(title)
+      const res = await todolistSlice.createTodolist(title)
 
       if (res.data.resultCode === RESULT_CODE.SUCCEEDED) {
         dispatch(appAction.setStatus({ status: 'succeeded' }))
@@ -152,7 +152,7 @@ const changeTodolistTitle = createAppAsyncThunk<
 
   try {
     dispatch(appAction.setStatus({ status: 'loading' }))
-    const res = await todolistAPI.updateTodolist(arg)
+    const res = await todolistSlice.updateTodolist(arg)
 
     if (res.data.resultCode === RESULT_CODE.SUCCEEDED) {
       dispatch(appAction.setStatus({ status: 'succeeded' }))

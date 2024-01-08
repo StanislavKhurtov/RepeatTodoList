@@ -1,30 +1,35 @@
-import React, { ChangeEvent } from 'react'
+import React, { ChangeEvent, useCallback } from 'react'
 
 import { Trash } from '@/assets'
 import { EditableSpan } from '@/common/components/EditableSpan'
 import { TaskStatuses } from '@/common/enums/common.enums'
-import { TaskType } from '@/features/TodolistList/api/task-api'
+import { useActions } from '@/common/hooks/useActions'
+import { TaskType } from '@/features/TodolistList/api/tasksSlice.types'
+import { tasksThunks } from '@/features/TodolistList/model/task-reducer'
 import clsx from 'clsx'
 
-type TaskProps = {
-  changeTaskStatus: (todolistId: string, taskId: string, status: TaskStatuses) => void
-  changeTaskTitle: (todolistId: string, taskId: string, title: string) => void
-  removeTask: (todolistId: string, taskId: string) => void
+type Props = {
   task: TaskType
   todolistId: string
 }
-export const Task = React.memo((props: TaskProps) => {
-  const onClickHandler = () => props.removeTask(props.todolistId, props.task.id)
+export const Task = React.memo((props: Props) => {
+  const { removeTask, updateTask } = useActions(tasksThunks)
+  const onClickHandler = () => removeTask({ taskId: props.task.id, todolistId: props.todolistId })
   const changeTaskTitle = (title: string) => {
-    props.changeTaskTitle(props.todolistId, props.task.id, title)
+    updateTask({ domainModel: { title }, taskId: props.task.id, todolistId: props.todolistId })
   }
-  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    props.changeTaskStatus(
-      props.todolistId,
-      props.task.id,
-      e.currentTarget.checked ? TaskStatuses.Completed : TaskStatuses.New
-    )
-  }
+  const onChangeHandlerStatus = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      const status = e.currentTarget.checked ? TaskStatuses.Completed : TaskStatuses.New
+
+      updateTask({
+        domainModel: { status },
+        taskId: props.task.id,
+        todolistId: props.todolistId,
+      })
+    },
+    [props.todolistId, props.task.id, updateTask]
+  )
 
   return (
     <div
@@ -35,7 +40,7 @@ export const Task = React.memo((props: TaskProps) => {
       <input
         checked={props.task.status === TaskStatuses.Completed}
         className={'todo__input'}
-        onChange={onChangeHandler}
+        onChange={onChangeHandlerStatus}
         type={'checkbox'}
       />
       <EditableSpan onChange={changeTaskTitle} title={props.task.title} />
