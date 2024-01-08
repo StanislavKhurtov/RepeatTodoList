@@ -23,4 +23,4 @@ const slice = createSlice({
 })
 
 export const appAction = slice.actions
-export const appReducer = slice.reducer
+export const appSlice = slice.reducer
