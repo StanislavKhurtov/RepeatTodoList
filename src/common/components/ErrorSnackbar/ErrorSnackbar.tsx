@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { appAction } from '@/app/app-reducer'
+import { appAction } from '@/app/appSlice'
 import { useAppSelector } from '@/app/store'
 import { useAppDispatch } from '@/common/hooks/useAppDispatch'
 import { selectError } from '@/app/app.selectors'
