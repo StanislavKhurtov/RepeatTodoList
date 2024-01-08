@@ -1,4 +1,4 @@
-import { appAction } from '@/app/app-reducer'
+import { appAction } from '@/app/appSlice'
 import { RESULT_CODE } from '@/common/enums/common.enums'
 import { createAppAsyncThunk } from '@/common/utils'
 import { handleServerAppError } from '@/common/utils/handleServerAppError'
@@ -42,9 +42,9 @@ const logIn = createAppAsyncThunk<{ isLoggedIn: true }, AuthParamsType>(
 
         return { isLoggedIn: true }
       } else {
-        handleServerAppError(res.data, dispatch)
+        handleServerAppError(res.data, dispatch, false)
 
-        return rejectWithValue(null)
+        return rejectWithValue(res.data)
       }
     } catch (error) {
       handleServerNetworkError(error, dispatch)
