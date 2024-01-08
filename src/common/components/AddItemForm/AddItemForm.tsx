@@ -3,6 +3,7 @@ import React, { ChangeEvent, InputHTMLAttributes, KeyboardEvent, ReactNode, useS
 import clsx from 'clsx'
 
 type Props = {
+  addDate?: boolean
   addItem: (title: string) => void
   disabled?: boolean
   label?: string
@@ -24,9 +25,17 @@ export const AddItemForm = React.memo((props: Props) => {
       addItem()
     }
   }
+
   const addItem = () => {
     if (newTitle.trim() !== '') {
-      props.addItem(newTitle.trim())
+      let title = newTitle.trim()
+
+      if (props.addDate) {
+        const currentDate = new Date().toLocaleDateString('ru-RU')
+
+        title = `${currentDate} - ${title}`
+      }
+      props.addItem(title)
       setNewTitle('')
     } else {
       setError('Title is required')
