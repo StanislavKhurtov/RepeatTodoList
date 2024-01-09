@@ -1,7 +1,7 @@
 import { Trash } from '@/assets'
 import { EditableSpan } from '@/common/components/EditableSpan'
 import { useActions } from '@/common/hooks/useActions'
-import { TodolistDomainType, todolistThunks } from '@/features/TodolistList/model/todolists-reducer'
+import { TodolistDomainType, todolistThunks } from '@/features/TodolistList/model/todolistsSlice'
 type Props = {
   todolist: TodolistDomainType
 }

@@ -1,7 +1,7 @@
 import { useActions } from '@/common/hooks/useActions'
 import { ResponseType } from '@/common/types/common.types'
 import { AuthParamsType } from '@/features/auth/api/auth-api.types'
-import { authThunk } from '@/features/auth/model/auth-reducer'
+import { authThunk } from '@/features/auth/model/authSlice'
 import { useFormik } from 'formik'
 
 type FormikErrorType = {
