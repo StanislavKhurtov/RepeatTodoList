@@ -3,7 +3,7 @@ import {
   FilterPropsType,
   TodolistDomainType,
   todolistAction,
-} from '@/features/TodolistList/model/todolists-reducer'
+} from '@/features/TodolistList/model/todolistsSlice'
 import clsx from 'clsx'
 
 type Props = {

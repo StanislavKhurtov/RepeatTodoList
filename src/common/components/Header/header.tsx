@@ -5,7 +5,7 @@ import { LogOutIcon } from '@/assets'
 import { Linear } from '@/common/components/Preloader'
 import { useActions } from '@/common/hooks/useActions'
 import { selectIsLoginIn } from '@/features/auth/model/auth.selectors'
-import { authThunk } from '@/features/auth/model/auth-reducer'
+import { authThunk } from '@/features/auth/model/authSlice'
 
 export const Header = () => {
   const status = useAppSelector<RequestStatusType>(selectStatus)

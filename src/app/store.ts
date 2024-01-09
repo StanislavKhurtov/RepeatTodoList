@@ -1,9 +1,9 @@
 import { TypedUseSelectorHook, useSelector } from 'react-redux'
 
 import { appSlice } from '@/app/appSlice'
-import { tasksReducer } from '@/features/TodolistList/model/task-reducer'
-import { todolistReducer } from '@/features/TodolistList/model/todolists-reducer'
-import { authReducer } from '@/features/auth/model/auth-reducer'
+import { tasksReducer } from '@/features/TodolistList/model/tasksSlice'
+import { todolistReducer } from '@/features/TodolistList/model/todolistsSlice'
+import { authSlice } from '@/features/auth/model/authSlice'
 import { configureStore } from '@reduxjs/toolkit'
 import { AnyAction } from 'redux'
 import { ThunkAction } from 'redux-thunk'
@@ -11,7 +11,7 @@ import { ThunkAction } from 'redux-thunk'
 export const store = configureStore({
   reducer: {
     app: appSlice,
-    auth: authReducer,
+    auth: authSlice,
     tasks: tasksReducer,
     todolists: todolistReducer,
   },

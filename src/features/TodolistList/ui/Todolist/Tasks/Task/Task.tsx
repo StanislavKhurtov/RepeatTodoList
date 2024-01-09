@@ -4,8 +4,8 @@ import { Trash } from '@/assets'
 import { EditableSpan } from '@/common/components/EditableSpan'
 import { TaskStatuses } from '@/common/enums/common.enums'
 import { useActions } from '@/common/hooks/useActions'
-import { TaskType } from '@/features/TodolistList/api/tasksSlice.types'
-import { tasksThunks } from '@/features/TodolistList/model/task-reducer'
+import { TaskType } from '@/features/TodolistList/api/tasksAPI.types'
+import { tasksThunks } from '@/features/TodolistList/model/tasksSlice'
 import clsx from 'clsx'
 
 type Props = {
