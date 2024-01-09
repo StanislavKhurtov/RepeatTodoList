@@ -1,6 +1,6 @@
 import { TaskStatuses } from '@/common/enums'
-import { TaskType } from '@/features/TodolistList/api/tasksSlice.types'
-import { TodolistDomainType } from '@/features/TodolistList/model/todolists-reducer'
+import { TaskType } from '@/features/TodolistList/api/tasksAPI.types'
+import { TodolistDomainType } from '@/features/TodolistList/model/todolistsSlice'
 import { Task } from '@/features/TodolistList/ui/Todolist/Tasks/Task/Task'
 type Props = {
   tasks: TaskType[]

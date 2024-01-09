@@ -18,22 +18,6 @@ const slice = createSlice({
       .addCase(authThunk.initialized.fulfilled, (state, action) => {
         state.isLoggedIn = action.payload.isLoggedIn
       })
-    /*   .addMatcher(
-        (action: AnyAction) => {
-          if (
-            action.type === 'auth/login/fulfilled' ||
-            action.type === 'auth/logout/fulfilled' ||
-            action.type === 'app/initializeApp/fulfilled'
-          ) {
-            return true
-          } else {
-            return false
-          }
-        },
-        (state, action: AnyAction) => {
-          state.isLoggedIn = action.payload.isLoggedIn
-        }
-      )*/
   },
   initialState: {
     isLoggedIn: false,

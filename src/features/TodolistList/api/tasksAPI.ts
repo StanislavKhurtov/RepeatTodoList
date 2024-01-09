@@ -4,10 +4,10 @@ import {
   GetTaskResponse,
   TaskType,
   UpdateTaskModelType,
-} from '@/features/TodolistList/api/tasksSlice.types'
+} from '@/features/TodolistList/api/tasksAPI.types'
 import { AxiosResponse } from 'axios'
 
-export const tasksSlice = {
+export const tasksAPI = {
   createTask(todolistId: string, title: string) {
     return instance.post<
       ResponseType<{ item: TaskType }>,
