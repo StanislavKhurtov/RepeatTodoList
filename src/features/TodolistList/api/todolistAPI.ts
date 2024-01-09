@@ -3,10 +3,10 @@ import { ResponseType } from '@/common/types/common.types'
 import {
   TodolistType,
   UpdateTodolistTitleArgType,
-} from '@/features/TodolistList/api/todolistSlice.types'
+} from '@/features/TodolistList/api/todolistAPI.types'
 import { AxiosResponse } from 'axios'
 
-export const todolistSlice = {
+export const todolistAPI = {
   createTodolist(title: string) {
     return instance.post<
       ResponseType<{ item: TodolistType }>,
