@@ -8,9 +8,9 @@ import { ErrorSnackbar } from '@/common/components/ErrorSnackbar/ErrorSnackbar'
 import { Header } from '@/common/components/Header'
 import { Linear } from '@/common/components/Preloader'
 import { useActions } from '@/common/hooks/useActions'
-import { TaskType } from '@/features/TodolistList/api/tasksSlice.types'
+import { TaskType } from '@/features/TodolistList/api/tasksAPI.types'
 import { TodolistList } from '@/features/TodolistList/ui/TodolistList'
-import { authThunk } from '@/features/auth/model/auth-reducer'
+import { authThunk } from '@/features/auth/model/authSlice'
 import { Login } from '@/features/auth/ui/login'
 
 export type TasksStateType = {

@@ -1,10 +1,11 @@
 import React, { ChangeEvent, InputHTMLAttributes, KeyboardEvent, ReactNode, useState } from 'react'
 
+import { ResponseType } from '@/common/types'
 import clsx from 'clsx'
 
 type Props = {
   addDate?: boolean
-  addItem: (title: string) => void
+  addItem: (title: string) => Promise<any>
   disabled?: boolean
   label?: string
   trigger?: ReactNode
@@ -35,8 +36,16 @@ export const AddItemForm = React.memo((props: Props) => {
 
         title = `${currentDate} - ${title}`
       }
-      props.addItem(title)
-      setNewTitle('')
+      props
+        .addItem(title)
+        .then(() => {
+          setNewTitle('')
+        })
+        .catch((err: ResponseType) => {
+          if (err?.resultCode) {
+            setError(err.messages[0])
+          }
+        })
     } else {
       setError('Title is required')
     }
