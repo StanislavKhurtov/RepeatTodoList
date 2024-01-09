@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 
-import { PlusSquareOutline } from '@/assets'
 import { AddItemForm } from '@/common/components/AddItemForm'
 import { useActions } from '@/common/hooks/useActions'
 import { TaskType } from '@/features/TodolistList/api/tasksAPI.types'
@@ -32,7 +31,8 @@ export const Todolist = React.memo(({ tasks, todolist }: Props) => {
         <AddItemForm
           addItem={addTaskCB}
           disabled={todolist.entityStatus === 'loading'}
-          trigger={<PlusSquareOutline className={'icon'} />}
+          trigger={<button>+</button>}
+          placeholder="Add New Task"
         />
         <Tasks tasks={tasks} todolist={todolist} />
         <FilterTaskButtons todolist={todolist} />

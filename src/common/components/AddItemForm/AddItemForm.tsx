@@ -1,11 +1,10 @@
 import React, { ChangeEvent, InputHTMLAttributes, KeyboardEvent, ReactNode, useState } from 'react'
 
-import { ResponseType } from '@/common/types'
 import clsx from 'clsx'
 
 type Props = {
   addDate?: boolean
-  addItem: (title: string) => Promise<any>
+  addItem: (title: string) => void
   disabled?: boolean
   label?: string
   trigger?: ReactNode
@@ -23,11 +22,11 @@ export const AddItemForm = React.memo((props: Props) => {
       setError(null)
     }
     if (e.key === 'Enter') {
-      addItem()
+      addItemHandler()
     }
   }
 
-  const addItem = () => {
+  const addItemHandler = () => {
     if (newTitle.trim() !== '') {
       let title = newTitle.trim()
 
@@ -36,16 +35,8 @@ export const AddItemForm = React.memo((props: Props) => {
 
         title = `${currentDate} - ${title}`
       }
-      props
-        .addItem(title)
-        .then(() => {
-          setNewTitle('')
-        })
-        .catch((err: ResponseType) => {
-          if (err?.resultCode) {
-            setError(err.messages[0])
-          }
-        })
+      props.addItem(title)
+      setNewTitle('')
     } else {
       setError('Title is required')
     }
@@ -62,7 +53,7 @@ export const AddItemForm = React.memo((props: Props) => {
         onKeyPress={onKeypressHandler}
         value={newTitle}
       />
-      <button className={'AddItemForm__btn'} disabled={props.disabled} onClick={addItem}>
+      <button className={'AddItemForm__btn'} disabled={props.disabled} onClick={addItemHandler}>
         {props.trigger}
       </button>
       {error && <div className={'error-message'}>{error}</div>}

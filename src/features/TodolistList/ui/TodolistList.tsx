@@ -3,7 +3,6 @@ import { Navigate } from 'react-router-dom'
 
 import { TasksStateType } from '@/app/App'
 import { useAppSelector } from '@/app/store'
-import { PlusSquareOutline } from '@/assets'
 import { AddItemForm } from '@/common/components/AddItemForm'
 import { useActions } from '@/common/hooks/useActions'
 import { tasksThunks } from '@/features/TodolistList/model/tasksSlice'
@@ -42,8 +41,8 @@ export const TodolistList = () => {
       <AddItemForm
         addDate
         addItem={addTodolistCB}
-        label={'New Todolist'}
-        trigger={<PlusSquareOutline className={'icon'} />}
+        label={'Add New Todolist'}
+        trigger={<button>+</button>}
       />
       {todolists.map(todolist => {
         const taskForTodolist = tasks[todolist.id]

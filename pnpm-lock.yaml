@@ -11,6 +11,9 @@ dependencies:
   '@emotion/styled':
     specifier: ^11.11.0
     version: 11.11.0(@emotion/react@11.11.3)(@types/react@18.2.45)(react@18.2.0)
+  '@fontsource/ubuntu':
+    specifier: ^5.0.8
+    version: 5.0.8
   '@mui/icons-material':
     specifier: ^5.15.2
     version: 5.15.2(@mui/material@5.15.2)(@types/react@18.2.45)(react@18.2.0)
@@ -578,6 +581,10 @@ packages:
 
   /@floating-ui/utils@0.1.6:
     resolution: {integrity: sha512-OfX7E2oUDYxtBvsuS4e/jSn4Q9Qb6DzgeYtsAdkPZ47znpoNsMgZw0+tVijiv3uGNR6dgNlty6r9rzIzHjtd/A==}
+    dev: false
+
+  /@fontsource/ubuntu@5.0.8:
+    resolution: {integrity: sha512-lZY64hVXrnkt/+5jRfm0uMiRv+lmrIdnATAnDj1SPqebmI2UDf3KC9p4rOkIYsBOjOsD6seJ82GIQE067DSvWw==}
     dev: false
 
   /@humanwhocodes/config-array@0.11.13:

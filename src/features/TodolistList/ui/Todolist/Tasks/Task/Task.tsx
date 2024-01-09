@@ -39,7 +39,7 @@ export const Task = React.memo((props: Props) => {
     >
       <input
         checked={props.task.status === TaskStatuses.Completed}
-        className={'todo__input'}
+        className={'todo__input ui-checkbox'}
         onChange={onChangeHandlerStatus}
         type={'checkbox'}
       />

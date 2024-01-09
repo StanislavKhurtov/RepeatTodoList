@@ -17,12 +17,17 @@
   display: flex;
   align-items: center;
   gap: 5px;
+  transition: color 0.3s ease 0s;
+  &:hover {
+    color: #12519b;
+  }
 }
 .header__icon {
   width: 22px;
   height: 22px;
-  color: #FFFFFF;
-
+  color: #94adcf;
+  transition: color 0.3s ease 0s;
+  &:hover {
+    color: #12519b;
+  }
 }
-
-
