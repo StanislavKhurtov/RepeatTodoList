@@ -15,7 +15,6 @@ const slice = createSlice({
         state.status = 'succeeded'
       })
       .addMatcher(isRejected, (state, action: AnyAction) => {
-        debugger
         state.status = 'failed'
         if (action.payload) {
           if (
