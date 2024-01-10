@@ -17,6 +17,7 @@ export const Header = () => {
 
   return (
     <>
+      {status === 'loading' && <Linear className={'preloader'} />}
       <div className={'header'}>
         <div className={'header__container'}>
           <div className={'header__logo'}>TasksAssistant</div>
@@ -30,7 +31,6 @@ export const Header = () => {
           )}
         </div>
       </div>
-      {status === 'loading' && <Linear className={'preloader'} />}
     </>
   )
 }

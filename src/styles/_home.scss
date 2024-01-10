@@ -1,5 +1,6 @@
 .todo {
-  flex: 0 0 100%;
+  flex: 1 0 22.8%;
+
   padding: 20px;
   word-break: break-word;
   flex-wrap: wrap;
@@ -33,13 +34,23 @@
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
+  font-size: 18px;
 }
 
 .todo__item {
+  padding: 5px 10px;
   display: flex;
   gap: 10px;
   align-items: center;
+  background: #38404b;
+  box-shadow:
+    5px 5px 13px 0px rgba(31, 35, 41, 0.9),
+    -5px -5px 10px 0px rgba(81, 93, 109, 0.9),
+    2px -2px 2px 0px rgba(31, 35, 41, 0.2),
+    -5px 5px 10px 0px rgba(31, 35, 41, 0.2),
+    -1px -1px 2px 0px rgba(31, 35, 41, 0.5) inset,
+    1px 1px 2px 0px rgba(81, 93, 109, 0.3) inset;
 }
 
 .todo__item span {
@@ -56,18 +67,28 @@
   display: flex;
   flex-wrap: nowrap;
 }
+.item__fill {
+  flex-grow: 1;
+}
+
+.item__text {
+  width: 100%;
+}
 
 .todo__btn {
   padding: 6px 12px;
   border-radius: 5px;
   white-space: nowrap;
+  align-self: flex-end;
+  justify-content: flex-end;
+  justify-items: flex-end;
+  text-align: end;
 }
 
 .item__btn {
-  transition: all 0.4s;
-
+  transition: color 0.3s ease 0s;
   &:hover {
-    color: black;
+    color: #12519b;
   }
 }
 .activeFilter {

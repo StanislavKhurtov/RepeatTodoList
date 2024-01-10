@@ -1,0 +1,43 @@
+.pageForFound {
+  padding-top: 100px;
+}
+
+.pageForFound__container {
+}
+
+.pageForFound__body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.pageForFound__text {
+  font-size: 200px;
+}
+
+.pageForFound__subtext {
+  font-size: 18px;
+}
+
+.pageForFound__link {
+  padding: 9px 10px;
+
+  font-size: 14px;
+
+  border-radius: 20px;
+  outline: 1px solid #94adcf;
+
+  transition: all 0.4s ease 0s;
+
+  &:hover {
+    color: black;
+    outline-color: black;
+  }
+}
+
+@media (width <= 500px) {
+  .pageForFound__text {
+    font-size: 160px;
+  }
+}

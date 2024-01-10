@@ -11,6 +11,9 @@ dependencies:
   '@emotion/styled':
     specifier: ^11.11.0
     version: 11.11.0(@emotion/react@11.11.3)(@types/react@18.2.45)(react@18.2.0)
+  '@fontsource/roboto':
+    specifier: ^5.0.8
+    version: 5.0.8
   '@fontsource/ubuntu':
     specifier: ^5.0.8
     version: 5.0.8
@@ -581,6 +584,10 @@ packages:
 
   /@floating-ui/utils@0.1.6:
     resolution: {integrity: sha512-OfX7E2oUDYxtBvsuS4e/jSn4Q9Qb6DzgeYtsAdkPZ47znpoNsMgZw0+tVijiv3uGNR6dgNlty6r9rzIzHjtd/A==}
+    dev: false
+
+  /@fontsource/roboto@5.0.8:
+    resolution: {integrity: sha512-XxPltXs5R31D6UZeLIV1td3wTXU3jzd3f2DLsXI8tytMGBkIsGcc9sIyiupRtA8y73HAhuSCeweOoBqf6DbWCA==}
     dev: false
 
   /@fontsource/ubuntu@5.0.8:

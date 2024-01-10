@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useCallback } from 'react'
 
-import { Trash } from '@/assets'
+import { RemoveIcon } from '@/assets'
 import { EditableSpan } from '@/common/components/EditableSpan'
 import { TaskStatuses } from '@/common/enums/common.enums'
 import { useActions } from '@/common/hooks/useActions'
@@ -43,9 +43,10 @@ export const Task = React.memo((props: Props) => {
         onChange={onChangeHandlerStatus}
         type={'checkbox'}
       />
-      <EditableSpan onChange={changeTaskTitle} title={props.task.title} />
+      <EditableSpan className={'item__text'} onChange={changeTaskTitle} title={props.task.title} />
+      <div className={'item__fill'}></div>
       <button className={'item__btn'} onClick={onClickHandler}>
-        {<Trash className={'iconDelete'} />}
+        {<RemoveIcon className={'iconDelete'} />}
       </button>
     </div>
   )

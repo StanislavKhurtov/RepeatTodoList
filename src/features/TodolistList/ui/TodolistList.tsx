@@ -5,8 +5,8 @@ import { TasksStateType } from '@/app/App'
 import { useAppSelector } from '@/app/store'
 import { AddItemForm } from '@/common/components/AddItemForm'
 import { useActions } from '@/common/hooks/useActions'
-import { tasksThunks } from '@/features/TodolistList/model/tasksSlice'
 import { selectTasks } from '@/features/TodolistList/model/tasks.selectors'
+import { tasksThunks } from '@/features/TodolistList/model/tasksSlice'
 import { selectTodolists } from '@/features/TodolistList/model/todolists.selectors'
 import { TodolistDomainType, todolistThunks } from '@/features/TodolistList/model/todolistsSlice'
 import { Todolist } from '@/features/TodolistList/ui/Todolist/Todolist'
@@ -38,12 +38,7 @@ export const TodolistList = () => {
 
   return (
     <div className={'home__container'}>
-      <AddItemForm
-        addDate
-        addItem={addTodolistCB}
-        label={'Add New Todolist'}
-        trigger={<button>+</button>}
-      />
+      <AddItemForm addDate addItem={addTodolistCB} label={'Add New Todolist'} trigger={'+'} />
       {todolists.map(todolist => {
         const taskForTodolist = tasks[todolist.id]
 

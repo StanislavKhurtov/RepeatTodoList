@@ -31,8 +31,8 @@ export const Todolist = React.memo(({ tasks, todolist }: Props) => {
         <AddItemForm
           addItem={addTaskCB}
           disabled={todolist.entityStatus === 'loading'}
-          trigger={<button>+</button>}
-          placeholder="Add New Task"
+          placeholder={'Add New Task'}
+          trigger={'+'}
         />
         <Tasks tasks={tasks} todolist={todolist} />
         <FilterTaskButtons todolist={todolist} />
