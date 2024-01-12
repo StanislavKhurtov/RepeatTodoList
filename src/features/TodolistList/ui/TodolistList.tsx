@@ -38,7 +38,7 @@ export const TodolistList = () => {
 
   return (
     <div className={'home__container'}>
-      <AddItemForm addDate addItem={addTodolistCB} label={'Add New Todolist'} trigger={'+'} />
+      <AddItemForm addItem={addTodolistCB} label={'Add New Todolist'} trigger={'+'} />
       {todolists.map(todolist => {
         const taskForTodolist = tasks[todolist.id]
 
